@@ -1,6 +1,6 @@
 # Mechanic Events
 
-Mechanic events are various things that a mechanic can do. This can range from damage players inside an AOE, to spawning more mechanics, to making bosses move to a certain location, etc.
+Mechanic events are various things that a mechanic can do. This can range from damaging players inside an AOE, to spawning more mechanics, to making bosses move to a certain location, etc.
 
 ### Contents  
 1. [Spawning Objects](#SpawningObjects)
