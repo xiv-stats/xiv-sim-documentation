@@ -3,6 +3,21 @@
 Simulator Download: [Releases](https://github.com/xiv-stats/xiv-sim-documentation/releases)  
 Mechanic Folder: [xiv-sim-mechanics](https://github.com/xiv-stats/xiv-sim-mechanics)
 
+#### Setup Guide
+1. Download and extract the latest version from the [releases](https://github.com/xiv-stats/xiv-sim-documentation/releases) page.
+2. Download the latest mechanic folder from the [mechanics repo](https://github.com/xiv-stats/xiv-sim-mechanics).
+3. Place the `Mechanics` folder from step 2 in the same directory as the `XivMechanicSimNetworked.exe` from the extracted archive.
+
+#### Host Setup
+1. In order to host a room, you will need to enable port forwarding on your router. The steps for this will be different for each router.
+2. The following settings should be used for port forwarding:
+   - **Service Type:** TCP/UDP
+   - **Internal Ports:** 7777~7777
+   - **External Ports:** 7777~7777
+   - **Server IPv4:** (The local IP of the computer that you will be running the simulator on.)
+2. Once port forwarding is set up, you will be able to host by sharing your [public IP](https://whatismyipaddress.com/).
+
+
 # FFXIV Mechanic Simulator Documentation
 ### Table of Contents  
 1. [Mechanic File Structure](#MechanicFileStructure)
