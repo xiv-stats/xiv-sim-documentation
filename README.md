@@ -85,7 +85,7 @@ Above example from [Mechanics/SimpleAoeDemo.json](Mechanics/SimpleAoeDemo.json)
   - `w`: unused
 - Rectangle
   - `x`: Length of the AOE
-  - `y`: Width of the AOE, *measured from the center*
+  - `y`: Width of the AOE
   - `z`: unused
   - `w`: unused
 
