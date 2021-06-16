@@ -23,10 +23,10 @@ Mechanic events are various things that a mechanic can do. This can range from d
    - [CheckMechanicTimer](#CheckMechanicTimer)
    - [ResetMechanicTimer](#ResetMechanicTimer)
 4. [Random Events](#RandomEvents)
-   - [ExecuteRandomEvents](#ExecuteRandomEvents)
    - [ExecuteRandomEventSequence](#ExecuteRandomEventSequence)
    - [ReshuffleMechanicPoolIds](#ReshuffleMechanicPoolIds)
    - [ReshufflePlayerIds](#ReshufflePlayerIds)
+   - [ExecuteRandomEvents](#ExecuteRandomEvents)
 5. [Apply Damage/Debuffs/etc](#MechanicEffectsEtc)
    - [ApplyEffectToPlayers](#ApplyEffectToPlayers)
    - [ApplyEffectToTargetOnly](#ApplyEffectToTargetOnly)
@@ -37,7 +37,7 @@ Mechanic events are various things that a mechanic can do. This can range from d
    - [SetEnemyBaseSpeed](#SetEnemyBaseSpeed)
    - [StartCastBar](#StartCastBar)
 
-## Spawning Objects <a name="SpawningObjects"/>
+# Spawning Objects <a name="SpawningObjects"/>
 
 ### SpawnMechanicEvent <a name="SpawnMechanicEvent"/>
 
@@ -92,7 +92,7 @@ This event takes a *targeting scheme* and will spawn a copy of the mechanic for 
 
 ---
 
-## General Events <a name="GeneralEvents"/>
+# General Events <a name="GeneralEvents"/>
 
 ### WaitEvent <a name="WaitEvent"/>
 Waits for a certain amount of time. This is primarily used inside a [`ExecuteMultipleEvents`](#ExecuteMultipleEvents) event in order to have it pause for a certain amount of time before executing more events.
@@ -160,7 +160,7 @@ Pauses a persistent event for some time. In some cases, you might have a conditi
 ---
 
 
-## Conditional Events <a name="ConditionalEvents"/>
+# Conditional Events <a name="ConditionalEvents"/>
 
 
 ### CheckNumberOfPlayers <a name="CheckNumberOfPlayers"/>
@@ -215,12 +215,62 @@ Resets the mechanic timer to 0. Used in conjunction with [`CheckMechanicTimer`](
 
 ---
 
-## Random Events <a name="RandomEvents"/>
+# Random Events <a name="RandomEvents"/>
+
+There are many situations where you might need to target 4 random players with mechanic A, and the *other* 4 players with mechanic B. Or you want to randomly do one of mechanic A/B first, and later on, do the other mechanic.
+
+In order to fully support these situations, each player and mechanic event has an internal randomized id which is pregenerated (and refreshed at controlled times). This way, you can have full control over how randomness works, without having to deal with storing previously generated random numbers inside variables, etc.
+
+---
+
+### ExecuteRandomEventSequence <a name="ExecuteRandomEventSequence"/>
+
+Executes a specific mechanic from the specified mechanic pool. The mechanic pool is sorted by the internal randomized id.
+
+| Property Name | Default Value | Description |
+| --- | --- | --- |
+| `mechanicPoolName` | N/A | The mechanic pool used to choose a mechanic, from the [`referenceMechanicProperties`](README.md#ReferenceMechanicProperties). |
+| `mechanicIndex` | `0` | An index into the pool, to pick which mechanic you want to execute. |
+
+> **Example:** Suppose you have the above situation where you want to pick one of mechanic A/B at random first, and then the other one later. This can be done with the following steps:
+>  1. Create a mechanic pool containing mechanics A/B.
+>  2. Then inside your timeline, create an `ExecuteRandomEventSequence` with this pool and index 0, which will result in one of the mechanics being executed at random.
+>  3. Later on, create another `ExecuteRandomEventSequence` with the same pool and index 1, which will result in the other mechanic being executed.
+
+---
+
+### ReshuffleMechanicPoolIds <a name="ReshuffleMechanicPoolIds"/>
+
+Refreshes the internal random ids for a specific mechanic pool.
+
+| Property Name | Default Value | Description |
+| --- | --- | --- |
+| `mechanicPoolName` | N/A | Same as [ExecuteRandomEventSequence](#ExecuteRandomEventSequence). |
+
+---
+
+### ReshufflePlayerIds <a name="ReshufflePlayerIds"/>
+
+Refreshes the internal random ids for all players (for targeting scenarios).
+
+(This event does not have any properties.)
+
+---
+
+### ExecuteRandomEvents <a name="ExecuteRandomEvents"/>
+
+A convenience event for executing a random subset of events in a specific mechanic pool. This is useful for situations like heavensfall towers, where you have 16 possible tower locations and only want to spawn 8 of them.
+
+| Property Name | Default Value | Description |
+| --- | --- | --- |
+| `mechanicPoolName` | N/A | Same as [ExecuteRandomEventSequence](#ExecuteRandomEventSequence). |
+| `numberToSpawn` | `1` | How many mechanics in the pool to spawn. |
+
+> **NOTE:** *This will ignore the internal random id and be completely random every time.*
+---
 
 
-
-## Enemy Controls <a name="EnemyControls"/>
-
+# Apply Damage/Debuffs/etc <a name="MechanicEffectsEtc"/>
 
 
-## Apply Damage/Debuffs/etc <a name="MechanicEffectsEtc"/>
+# Enemy Controls <a name="EnemyControls"/>
