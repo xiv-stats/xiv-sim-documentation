@@ -1,3 +1,8 @@
+# Downloads
+
+Simulator Download: [Releases](https://github.com/xiv-stats/xiv-sim-documentation/releases)  
+Mechanic Folder: [xiv-sim-mechanics](https://github.com/xiv-stats/xiv-sim-mechanics)
+
 # FFXIV Mechanic Simulator Documentation
 ### Table of Contents  
 1. [Mechanic File Structure](#MechanicFileStructure)
