@@ -197,11 +197,11 @@ Checks to see if the [mechanic depth](#MechanicDepth) value matches a certain ex
 
 ### CheckMechanicTimer <a name="CheckMechanicTimer"/>
 
-Checks to see if the mechanic timer matches a certain expression, and executes an event based on the outcome. The timer stores the number of seconds since the mechanic has spawned, or the time since the most recent [`ResetMechanicTimer`](#ResetMechanicTimer) on the mechanic. One use case would be e9s tiles, where you reset the mechanic timer based off of a [`CheckNumberOfPlayers`](#CheckNumberOfPlayers) event, and spawn a death square if the mechanic timer exceeds a certain value.
+Checks to see if the mechanic timer matches a certain expression, and executes an event based on the outcome. The mechanic timer stores the amount of time since the mechanic has spawned, or the time since the most recent [`ResetMechanicTimer`](#ResetMechanicTimer) done by the mechanic. One use case would be e9s tiles, where you reset the mechanic timer based on a [`CheckNumberOfPlayers`](#CheckNumberOfPlayers) event, and spawn a death square if the mechanic timer exceeds a certain value.
 
 | Property Name | Default Value | Description |
 | --- | --- | --- |
-| `expressionFormat` | N/A | Same as [CheckNumberOfPlayers](#CheckNumberOfPlayers) |
+| `expressionFormat` | N/A | Same as [CheckNumberOfPlayers](#CheckNumberOfPlayers), except `"{0}"` is replaced with the mechanic timer value. |
 | `successEvent` | `null` | Same as [CheckNumberOfPlayers](#CheckNumberOfPlayers). |
 | `failEvent` | `null` | Same as [CheckNumberOfPlayers](#CheckNumberOfPlayers). |
 
