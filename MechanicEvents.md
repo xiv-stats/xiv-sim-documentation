@@ -151,7 +151,7 @@ Causes all currently running mechanics that have the specified tag to destroy th
 
 ### PausePersistentEvent <a name="PausePersistentEvent"/>
 
-Pauses a persistent event for some time. In some cases, you might have a conditional event that is constantly checked, and it will spawn a mechanic if the condition is failed. For example tiles in e9s will spawn a death square if 2 people enter it. For this case, the pause event can be used to prevent additional death squares from spawning until the initial death square expires.
+Pauses a persistent event for some time. In some cases, you might have a conditional event that is constantly checked, and it will spawn a mechanic if the condition is failed. For example, tiles in e9s will spawn a death square if 2 people enter it. For this case, the pause event can be used to prevent additional death squares from spawning until the initial death square expires.
 
 | Property Name | Default Value | Description |
 | --- | --- | --- |
