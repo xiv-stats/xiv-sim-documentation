@@ -234,7 +234,7 @@ Executes a specific mechanic from the specified mechanic pool. The mechanic pool
 
 > **NOTE:** As an example, the above situation where you want to pick one of mechanic A/B at random first, and then the other one later can be done as follows:
 >  1. Create a mechanic pool containing mechanics A/B.
->  2. Then inside your timeline, create an `ExecuteRandomEventSequence` with this pool and index 0, which will result in one of the mechanics being executed at random.
+>  2. Inside your timeline, create an `ExecuteRandomEventSequence` with this pool and index 0, which will result in one of the mechanics being executed at random.
 >  3. Later on, create another `ExecuteRandomEventSequence` with the same pool and index 1, which will result in the other mechanic being executed.
 
 ---
