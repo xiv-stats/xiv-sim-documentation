@@ -73,7 +73,7 @@ Upon spawning, every mechanic will proceed with the following logic:
   
 ### Collision Shape <a name="CollisionShape">
 
-The collision shape is a collection of 4 numbers (x,y,z,w) that are used to define certain properties of the AOE, like radius for round AOEs or length for rectangle AOEs.
+The `collisionShapeParams` is a collection of 4 numbers `(x,y,z,w)` that are used to define certain properties of the AOE, like radius for round AOEs or length for rectangle AOEs.
 
 ![](Images/AoeShapes.png)
 Above example from [Mechanics/SimpleAoeDemo.json](Mechanics/SimpleAoeDemo.json)
