@@ -49,7 +49,7 @@ Almost everything about a specific mechanic is defined in the mechanic propertie
 | `followSpeed`| `0` | The speed at which to follow the player. A mechanic with a `followSpeed` of 0 but has `isTargeted` set to true will aim itself at the player, but won't move towards the player. |
 | `collisionShape` | N/A | Either `"Round"` or `"Rectangle"`. Used in conjunction with `collisionShapeParams`. |
 | `collisionShapeParams` | N/A | Used to define the size/etc of the AOE (see the [collision shape](#CollisionShape) section below for more details). |
-| `colorHtml` | N/A | A hex color in the following form `#rrggbb` or `#rrggbbaa`. |
+| `colorHtml` | N/A | A hex color in the following form: `#rrggbb` or `#rrggbbaa`. |
 | `visible` | `true` | Should the AOE indicator be visible or not? (Setting this to false is useful for "dummy" mechanics that are only used to spawn other mechanics.) |
 | `persistentTickInterval` | 0 | If the AOE is a persistent mechanic (puddle, etc), this is the rate at which the `persistentMechanic` is activated. |
 | `persistentActivationDelay` | 0 | The number of seconds to wait before starting the persistent mechanic. |
