@@ -19,9 +19,9 @@ Mechanic Folder: [xiv-sim-mechanics](https://github.com/xiv-stats/xiv-sim-mechan
 
 
 # FFXIV Mechanic Simulator Documentation
-> **NOTE:** The simulator is still in development, and there are still features that need to be added in order to support every scenario in FFXIV.
+> **NOTE:** *The simulator is still in development, and there are still features that need to be added in order to support every scenario in FFXIV.*
 
-> **NOTE 2:** This documentation is still a WIP, with many parts not complete. In addition, because the simulator is still in development, parts of the documentation may change as more features get added.
+> **NOTE 2:** *This documentation is still a WIP, with many parts not complete. In addition, because the simulator is still in development, parts of the documentation may change as more features get added.*
 
 ### Table of Contents  
 1. [Mechanic File Structure](#MechanicFileStructure)
