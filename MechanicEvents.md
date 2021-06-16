@@ -111,7 +111,7 @@ Executes multiple events in sequence. Will wait for the current event to finish 
 
 | Property Name | Default Value | Description |
 | --- | --- | --- |
-| `events` | N/A | A list of meechanic events to execute. |
+| `events` | N/A | A list of mechanic events to execute. |
 
 > **NOTE:** Most mechanic events will return immediately. If the mechanic list does not contain one of the following event types, then there is no significant difference between this and the parallel version:
 > - [`WaitEvent`](#WaitEvent)
@@ -127,7 +127,7 @@ Executes multiple events in parallel. Will **NOT** wait for the current event to
 
 | Property Name | Default Value | Description |
 | --- | --- | --- |
-| `events` | N/A | A list of meechanic events to execute. |
+| `events` | N/A | A list of mechanic events to execute. |
 
 ---
 
