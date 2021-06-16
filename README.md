@@ -51,8 +51,8 @@ Almost everything about a specific mechanic is defined in the mechanic propertie
 | `collisionShapeParams` | N/A | Used to define the size/etc of the AOE (see the [collision shape](#CollisionShape) section below for more details). |
 | `colorHtml` | N/A | A hex color in the following form: `#rrggbb` or `#rrggbbaa`. |
 | `visible` | `true` | Should the AOE indicator be visible or not? (Setting this to false is useful for "dummy" mechanics that are only used to spawn other mechanics.) |
-| `persistentTickInterval` | 0 | If the AOE is a persistent mechanic (puddle, etc), this is the rate at which the `persistentMechanic` is activated. |
-| `persistentActivationDelay` | 0 | The number of seconds to wait before starting the persistent mechanic. |
+| `persistentTickInterval` | `0` | If the AOE is a persistent mechanic (puddle, etc), this is the rate at which the `persistentMechanic` is activated. |
+| `persistentActivationDelay` | `0` | The number of seconds to wait before starting the persistent mechanic. |
 | `mechanic` | `null` | The mechanic event for this mechanic to do once (apply damage, spawn other mechanics, etc). See [Mechanic Events](MechanicEvents.md) for more details. |
 | `persistentMechanic` | `null` | The mechanic event that will be done every `persistentTickInterval` seconds. |
 | `staticTargetIds` | `null` | Used for targeting schemes. |
