@@ -21,6 +21,7 @@ Mechanic events are various things that a mechanic can do. This can range from d
    - [CheckNumberOfPlayers](#CheckNumberOfPlayers)
    - [CheckMechanicDepth](#CheckMechanicDepth)
    - [CheckMechanicTimer](#CheckMechanicTimer)
+   - [ResetMechanicTimer](#ResetMechanicTimer)
 4. [Random Events](#RandomEvents)
    - [ExecuteRandomEvents](#ExecuteRandomEvents)
    - [ExecuteRandomEventSequence](#ExecuteRandomEventSequence)
@@ -49,7 +50,7 @@ This event will spawn a mechanic at some position and rotation.
 | `rotation` | `0` | The rotation to spawn the mechanic at (degrees clockwise from north) |
 | `isPositionRelative` | `false` | If the event is executed by another (parent) mechanic, then this determines whether to use the position relative to the parent or not. |
 | `isRotationRelative` | `false` | This determines whether to use the rotation relative to the parent or not. |
-| `resetMechanicDepth` | `false` | Mechanics by default are spawned with a depth counter that is 1 greater than the parent mechanic's depth. If this is true, it will set the depth counter of the newly spawned mechanic to 0. |
+| `resetMechanicDepth` <a name="MechanicDepth"/> | `false` | Mechanics by default are spawned with a depth counter that is 1 greater than the parent mechanic's depth. If this is true, it will set the depth counter of the newly spawned mechanic to 0. |
 
 ---
 
@@ -132,7 +133,7 @@ Executes multiple events in parallel. Will **NOT** wait for the current event to
 
 ### EndMechanic <a name="EndMechanic"/>
 
-This event will cause the mechanic to destroy itself immediately. This is usually used in persistent events to end them early (twister puddle exploding, etc).
+Causes the mechanic to destroy itself immediately. This is usually used in persistent events to end them early (twister puddle exploding, etc).
 
 (This event does not have any properties.)
 
@@ -140,7 +141,7 @@ This event will cause the mechanic to destroy itself immediately. This is usuall
 
 ### ClearMechanicsWithTag <a name="ClearMechanicsWithTag"/>
 
-This event will cause all currently running mechanics that have the specified tag to destroy themselves immediately. This is useful for cleaning up persistent mechanics at phase transitions (removing e9s tiles/brambles, etc).
+Causes all currently running mechanics that have the specified tag to destroy themselves immediately. This is useful for cleaning up persistent mechanics at phase transitions (removing e9s tiles/brambles, etc).
 
 | Property Name | Default Value | Description |
 | --- | --- | --- |
@@ -162,6 +163,57 @@ Pauses a persistent event for some time. In some cases, you might have a conditi
 ## Conditional Events <a name="ConditionalEvents"/>
 
 
+### CheckNumberOfPlayers <a name="CheckNumberOfPlayers"/>
+
+Checks to see if the number of players matches a certain expression, and executes an event based on the outcome.
+
+| Property Name | Default Value | Description |
+| --- | --- | --- |
+| `expressionFormat` | N/A | The expression to compare for. This is used as a format string, where the `"{0}"` in the string is replaced with the number of players who are standing in the AOE. (See notes for more details) |
+| `ignoreInvincible` | `false` | If true, the condition will exclude recently revived players that have the "Invincibility" status (e9s tiles). |
+| `successEvent` | `null` | An event to execute if the condition is satisfied. (If unspecified does nothing.) |
+| `failEvent` | `null` | An event to execute if the condition is failed. (If unspecified does nothing.) |
+
+> **NOTE:** As an example, an `expressionFormat` with the value `"{0} = 1"` will check if there is exactly 1 player in the AOE. The following operators are supported:
+> - Comparisons: `=`, `>=`, `<=`, `>`, `<`, `<>`
+> - Arithmetic: `+`, `-`, `*`, `/`, `%`
+> - Boolean: `AND`, `OR`, `NOT`
+> - Grouping: `(`, `)`
+
+> **NOTE 2:** The expression must return a boolean value.
+---
+
+### CheckMechanicDepth <a name="CheckMechanicDepth"/>
+
+Checks to see if the [mechanic depth](#MechanicDepth) value matches a certain expression, and executes an event based on the outcome. This is useful for a mechanic like exaflares, where you can have each puddle mechanic spawn itself in an offset position, but you only want to spawn a total of *x* puddles.
+
+| Property Name | Default Value | Description |
+| --- | --- | --- |
+| `expressionFormat` | N/A | Same as [CheckNumberOfPlayers](#CheckNumberOfPlayers), except `"{0}"` is replaced with the mechanic depth value. |
+| `successEvent` | `null` | Same as [CheckNumberOfPlayers](#CheckNumberOfPlayers). |
+| `failEvent` | `null` | Same as [CheckNumberOfPlayers](#CheckNumberOfPlayers). |
+
+---
+
+### CheckMechanicTimer <a name="CheckMechanicTimer"/>
+
+Checks to see if the mechanic timer matches a certain expression, and executes an event based on the outcome. The timer stores the number of seconds since the mechanic has spawned, or the time since the most recent [`ResetMechanicTimer`](#ResetMechanicTimer) on the mechanic. One use case would be e9s tiles, where you reset the mechanic timer based off of a [`CheckNumberOfPlayers`](#CheckNumberOfPlayers) event, and spawn a death square if the mechanic timer exceeds a certain value.
+
+| Property Name | Default Value | Description |
+| --- | --- | --- |
+| `expressionFormat` | N/A | Same as [CheckNumberOfPlayers](#CheckNumberOfPlayers) |
+| `successEvent` | `null` | Same as [CheckNumberOfPlayers](#CheckNumberOfPlayers). |
+| `failEvent` | `null` | Same as [CheckNumberOfPlayers](#CheckNumberOfPlayers). |
+
+---
+
+### ResetMechanicTimer <a name="ResetMechanicTimer"/>
+
+Resets the mechanic timer to 0. Used in conjunction with [`CheckMechanicTimer`](#CheckMechanicTimer).
+
+(This event does not have any properties.)
+
+---
 
 ## Random Events <a name="RandomEvents"/>
 
