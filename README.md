@@ -64,6 +64,7 @@ The basic mechanic file structure is as follows:
 }
 ```
 
+For generating the mechanic file in C#, this is the basic structure of the program:
 ```C#
 // C#
 MechanicData data = new MechanicData(); // The class that contains all the mechanic data
@@ -85,7 +86,7 @@ data.referenceStatusProperties = new Dictionary<string, StatusEffectData>();
 // to use ExecuteMultipleEvents in here to execute events sequentially
 data.mechanicEvents = new List<MechanicEvent>();
 
-// Will produce the json file containing all the mechanic data.
+// This will produce the json file containing all the mechanic data.
 // Save this to a file and you can use it in the simulator.
 data.ToString(); 
 
@@ -96,12 +97,25 @@ data.ToString();
 The `referenceMechanicProperties` is a json object of the following form:
 
 ```javascript
+// JSON
 {
   "MechanicName1" : { /* Properties of mechanic 1 */ },
   "MechanicName2" : { /* Properties of mechanic 2 */ },
   "MechanicName3" : { /* Properties of mechanic 3 */ },
   ...
 }
+```
+
+In C#, it is a dictionary where the keys are the reference names and the values are the mechanic properties.
+```C#
+// C#
+MechanicData data = new MechanicData();
+data.referenceMechanicProperties = new Dictionary<string, MechanicProperties>();
+
+referenceMechanicProperties["MechanicName1"] = new MechanicProperties();
+referenceMechanicProperties["MechanicName2"] = new MechanicProperties();
+referenceMechanicProperties["MechanicName3"] = new MechanicProperties();
+...
 ```
 
 Here, the `"MechanicName1"`, etc will be used as a reference to these mechanics from elsewhere in the mechanic file. This name will not be displayed in the simulator.
