@@ -1,7 +1,8 @@
 # Downloads
 
-Simulator Download: [Releases](https://github.com/xiv-stats/xiv-sim-documentation/releases)  
-Mechanic Folder: [xiv-sim-mechanics](https://github.com/xiv-stats/xiv-sim-mechanics)
+**Simulator Download:** [Releases](https://github.com/xiv-stats/xiv-sim-documentation/releases)
+
+**Other Links:** [Discord](https://discord.gg/XjP3f2HXYy) | [Twitter](https://twitter.com/xiv_sim) | [Youtube](https://www.youtube.com/channel/UC_pX9gr7B-wd5nIBHafqiKw)
 
 #### Setup Guide
 1. Download and extract the latest version from the [releases](https://github.com/xiv-stats/xiv-sim-documentation/releases) page.
