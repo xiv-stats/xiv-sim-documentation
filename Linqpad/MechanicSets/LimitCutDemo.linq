@@ -10,16 +10,6 @@ var mechanicName = "LimitCutDemo";
 var baseOutputPath = @"D:\src\Unity\XivMechanicSimNetworked";
 var buildOutputPath = @"D:\src\Unity\xiv-sim-mechanics";
 
-JsonConvert.DefaultSettings = () =>
-{
-	return new JsonSerializerSettings
-	{
-		NullValueHandling = NullValueHandling.Ignore,
-		TypeNameHandling = TypeNameHandling.Auto,
-		DefaultValueHandling = DefaultValueHandling.Ignore
-	};
-};
-
 var mechanicData = new MechanicData();
 
 var limitcutGap = 1.45f;
