@@ -20,9 +20,9 @@
             "$type": "ApplyEffectToPlayers",
             "effect": {
               "$type": "DamageEffect",
+              "name": "Circle Aoe",
               "damageType": "Damage",
-              "damageAmount": 90000.0,
-              "name": "Circle Aoe"
+              "damageAmount": 90000.0
             }
           }
         ]
@@ -48,9 +48,9 @@
             "$type": "ApplyEffectToPlayers",
             "effect": {
               "$type": "DamageEffect",
+              "name": "Cone Aoe",
               "damageType": "Damage",
-              "damageAmount": 90000.0,
-              "name": "Cone Aoe"
+              "damageAmount": 90000.0
             }
           }
         ]
@@ -76,9 +76,9 @@
             "$type": "ApplyEffectToPlayers",
             "effect": {
               "$type": "DamageEffect",
+              "name": "Donut Aoe",
               "damageType": "Damage",
-              "damageAmount": 90000.0,
-              "name": "Donut Aoe"
+              "damageAmount": 90000.0
             }
           }
         ]
@@ -104,9 +104,9 @@
             "$type": "ApplyEffectToPlayers",
             "effect": {
               "$type": "DamageEffect",
+              "name": "Donut Cone Aoe",
               "damageType": "Damage",
-              "damageAmount": 90000.0,
-              "name": "Donut Cone Aoe"
+              "damageAmount": 90000.0
             }
           }
         ]
@@ -132,9 +132,9 @@
             "$type": "ApplyEffectToPlayers",
             "effect": {
               "$type": "DamageEffect",
+              "name": "Rectangle Aoe",
               "damageType": "Damage",
-              "damageAmount": 90000.0,
-              "name": "Circle Aoe"
+              "damageAmount": 90000.0
             }
           }
         ]
