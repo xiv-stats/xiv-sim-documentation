@@ -1497,7 +1497,7 @@ mechanicData.mechanicPools = new Dictionary<string, List<MechanicEvent>>
 
 ((ExecuteMultipleEvents)mechanicData.referenceMechanicProperties["CloudOfDarknessMechanics"].mechanic).events.Where(x => x is WaitEvent).Sum(x => ((WaitEvent)x).timeToWait).Dump();
 
-var resultText = JsonConvert.SerializeObject(mechanicData, Newtonsoft.Json.Formatting.Indented).Replace(", Assembly-CSharp", "");
+var resultText = mechanicData.ToString();
 
 File.WriteAllText($@"{baseOutputPath}\Mechanics\{mechanicName}.json", resultText);
 File.WriteAllText($@"{baseOutputPath}\Build\Mechanics\{mechanicName}.json", resultText);
