@@ -113,7 +113,7 @@ Upon spawning, every mechanic will proceed with the following logic:
 The `collisionShapeParams` is a collection of 4 numbers `(x,y,z,w)` that are used to define certain properties of the AOE, like radius for round AOEs or length for rectangle AOEs.
 
 ![](Images/AoeShapes.png)
-Above example from [Mechanics/SimpleAoeDemo.json](Mechanics/SimpleAoeDemo.json)
+Above example from [Linqpad/Examples/SimpleAoeDemo.linq](Linqpad/Examples/SimpleAoeDemo.linq)
    
 - Round
   - `x`: Outer radius of the AOE
