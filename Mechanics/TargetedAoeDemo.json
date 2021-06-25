@@ -1,0 +1,82 @@
+{
+  "referenceMechanicProperties": {
+    "TargetedCircle": {
+      "isTargeted": true,
+      "followSpeed": 10000.0,
+      "collisionShape": "Round",
+      "collisionShapeParams": {
+        "x": 1.0,
+        "y": 360.0,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "colorHtml": "#ff9600",
+      "mechanic": {
+        "$type": "ExecuteMultipleEvents",
+        "events": [
+          {
+            "$type": "WaitEvent",
+            "timeToWait": 15.0
+          },
+          {
+            "$type": "ApplyEffectToPlayers",
+            "effect": {
+              "$type": "DamageEffect",
+              "name": "Circle Aoe",
+              "damageType": "Damage",
+              "damageAmount": 10000.0
+            }
+          }
+        ]
+      }
+    },
+    "AimedRectangle": {
+      "isTargeted": true,
+      "collisionShape": "Rectangle",
+      "collisionShapeParams": {
+        "x": 50.0,
+        "y": 1.0,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "colorHtml": "#0196ff",
+      "mechanic": {
+        "$type": "ExecuteMultipleEvents",
+        "events": [
+          {
+            "$type": "WaitEvent",
+            "timeToWait": 15.0
+          },
+          {
+            "$type": "ApplyEffectToPlayers",
+            "effect": {
+              "$type": "DamageEffect",
+              "name": "Rectangle Aoe",
+              "damageType": "Damage",
+              "damageAmount": 10000.0
+            }
+          }
+        ]
+      }
+    }
+  },
+  "referenceTetherProperties": {},
+  "mechanicPools": {},
+  "referenceStatusProperties": {},
+  "mechanicEvents": [
+    {
+      "$type": "SpawnTargetedEvents",
+      "targetingScheme": {
+        "$type": "TargetAllPlayers"
+      },
+      "referenceMechanicName": "TargetedCircle"
+    },
+    {
+      "$type": "SpawnTargetedEvents",
+      "targetingScheme": {
+        "$type": "TargetAllPlayers"
+      },
+      "referenceMechanicName": "AimedRectangle"
+    }
+  ]
+}
