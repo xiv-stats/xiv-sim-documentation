@@ -50,6 +50,7 @@ For development, I use [Linqpad](https://www.linqpad.net/) to write my scripts f
 
 The basic mechanic file structure is as follows:
 ```javascript
+// JSON
 {
   "referenceMechanicProperties": {...} // Contains properties of most mechanics
   
@@ -61,6 +62,33 @@ The basic mechanic file structure is as follows:
   
   "mechanicEvents": {...}              // The list of events to execute
 }
+```
+
+```C#
+// C#
+MechanicData data = new MechanicData(); // The class that contains all the mechanic data
+
+// Contains properties of most mechanics
+data.referenceMechanicProperties = new Dictionary<string, MechanicProperties>();
+
+// Contains properties of tethers (can be null if not used)
+data.referenceTetherProperties = new Dictionary<string, TetherProperties>();
+
+// Used for spawning mechanics randomly (can be null if not used)
+data.mechanicPools = new Dictionary<string, List<MechanicEvent>>();
+
+// Contains properties of status effects (can be null if not used)
+data.referenceStatusProperties = new Dictionary<string, StatusEffectData>();
+
+// The list of events to execute
+// The events in this list will be executed in parallel, so you will need
+// to use ExecuteMultipleEvents in here to execute events sequentially
+data.mechanicEvents = new List<MechanicEvent>();
+
+// Will produce the json file containing all the mechanic data.
+// Save this to a file and you can use it in the simulator.
+data.ToString(); 
+
 ```
 
 ## Reference Mechanic Properties <a name="ReferenceMechanicProperties"/>
