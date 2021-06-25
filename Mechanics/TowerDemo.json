@@ -1,0 +1,94 @@
+{
+  "referenceMechanicProperties": {
+    "Aoe-Green": {
+      "colorHtml": "#00ff00"
+    },
+    "Tower": {
+      "collisionShape": "Round",
+      "collisionShapeParams": {
+        "x": 1.0,
+        "y": 360.0,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "colorHtml": "#ff9600",
+      "persistentTickInterval": 0.1,
+      "mechanic": {
+        "$type": "ExecuteMultipleEvents",
+        "events": [
+          {
+            "$type": "WaitEvent",
+            "timeToWait": 5.0
+          },
+          {
+            "$type": "ApplyEffectToPlayers",
+            "effect": {
+              "$type": "DamageEffect",
+              "name": "Tower",
+              "damageType": "Damage",
+              "damageAmount": 10000.0
+            }
+          },
+          {
+            "$type": "CheckNumberOfPlayers",
+            "expressionFormat": "{0} = 1",
+            "failEvent": {
+              "$type": "SpawnMechanicEvent",
+              "referenceMechanicName": "TowerFailed",
+              "isPositionRelative": true
+            }
+          }
+        ]
+      },
+      "persistentMechanic": {
+        "$type": "CheckNumberOfPlayers",
+        "expressionFormat": "{0} = 1",
+        "successEvent": {
+          "$type": "ModifyMechanicEvent",
+          "referenceMechanicName": "Aoe-Green"
+        },
+        "failEvent": {
+          "$type": "ModifyMechanicEvent",
+          "referenceMechanicName": "Tower"
+        }
+      }
+    },
+    "TowerFailed": {
+      "collisionShape": "Round",
+      "collisionShapeParams": {
+        "x": 3.0,
+        "y": 360.0,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "colorHtml": "#ff0000",
+      "mechanic": {
+        "$type": "ExecuteMultipleEvents",
+        "events": [
+          {
+            "$type": "WaitEvent",
+            "timeToWait": 0.2
+          },
+          {
+            "$type": "ApplyEffectToPlayers",
+            "effect": {
+              "$type": "DamageEffect",
+              "name": "TowerFailed",
+              "damageType": "TrueDamage",
+              "damageAmount": 9999999.0
+            }
+          }
+        ]
+      }
+    }
+  },
+  "referenceTetherProperties": {},
+  "mechanicPools": {},
+  "referenceStatusProperties": {},
+  "mechanicEvents": [
+    {
+      "$type": "SpawnMechanicEvent",
+      "referenceMechanicName": "Tower"
+    }
+  ]
+}
