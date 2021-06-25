@@ -1,7 +1,6 @@
 <Query Kind="Statements">
   <Reference>D:\src\Unity\XivMechanicSimNetworked\Library\ScriptAssemblies\Assembly-CSharp.dll</Reference>
   <Reference>&lt;ProgramFilesX64&gt;\Unity\Hub\Editor\2020.3.6f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</Reference>
-  <Namespace>Newtonsoft.Json</Namespace>
   <Namespace>UnityEngine</Namespace>
 </Query>
 
