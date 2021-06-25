@@ -45,7 +45,7 @@ This event will spawn a mechanic at some position and rotation.
 
 | Property Name | Default Value | Description |
 | --- | --- | --- |
-| `referenceMechanicName` | N/A | The mechanic to spawn, from the [`referenceMechanicProperties`](README.md#ReferenceMechanicProperties). |
+| `referenceMechanicName` | N/A | The mechanic to spawn, from the [`referenceMechanicProperties`](Documentation.md#ReferenceMechanicProperties). |
 | `position` | `(0,0)` | The position to spawn the mechanic at. |
 | `rotation` | `0` | The rotation to spawn the mechanic at (degrees clockwise from north) |
 | `isPositionRelative` | `false` | If the event is executed by another (parent) mechanic, then this determines whether to use the position relative to the parent or not. |
@@ -145,7 +145,7 @@ Causes all currently running mechanics that have the specified tag to destroy th
 
 | Property Name | Default Value | Description |
 | --- | --- | --- |
-| `mechanicTag` | `null` | The same `mechanicTag` that is specified in the [mechanic properties](README.md#MechanicProperties). Not specifying this will cause untagged mechanics to destroy themselves. |
+| `mechanicTag` | `null` | The same `mechanicTag` that is specified in the [mechanic properties](Documentation.md#MechanicProperties). Not specifying this will cause untagged mechanics to destroy themselves. |
 
 ---
 
@@ -229,7 +229,7 @@ Executes a specific mechanic from the specified mechanic pool. The mechanic pool
 
 | Property Name | Default Value | Description |
 | --- | --- | --- |
-| `mechanicPoolName` | N/A | The mechanic pool used to choose a mechanic, from the [`referenceMechanicProperties`](README.md#ReferenceMechanicProperties). |
+| `mechanicPoolName` | N/A | The mechanic pool used to choose a mechanic, from the [`referenceMechanicProperties`](Documentation.md#ReferenceMechanicProperties). |
 | `mechanicIndex` | `0` | An index into the pool, to pick which mechanic you want to execute. |
 
 > **NOTE:** As an example, the above situation where you want to pick one of mechanic A/B at random first, and then the other one later can be done as follows:
