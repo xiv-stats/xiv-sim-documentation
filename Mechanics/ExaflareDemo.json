@@ -1,0 +1,90 @@
+{
+  "referenceMechanicProperties": {
+    "Exaflare": {
+      "collisionShape": "Round",
+      "collisionShapeParams": {
+        "x": 1.0,
+        "y": 360.0,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "colorHtml": "#ff9600",
+      "mechanic": {
+        "$type": "ExecuteMultipleEvents",
+        "events": [
+          {
+            "$type": "WaitEvent",
+            "timeToWait": 2.0
+          },
+          {
+            "$type": "CheckMechanicDepth",
+            "expressionFormat": "{0} < 5",
+            "successEvent": {
+              "$type": "SpawnMechanicEvent",
+              "referenceMechanicName": "Exaflare",
+              "position": {
+                "x": 0.0,
+                "y": 1.5
+              },
+              "isPositionRelative": true,
+              "isRotationRelative": true
+            }
+          },
+          {
+            "$type": "WaitEvent",
+            "timeToWait": 1.0
+          },
+          {
+            "$type": "ApplyEffectToPlayers",
+            "effect": {
+              "$type": "DamageEffect",
+              "name": "Exaflare",
+              "damageType": "Damage",
+              "damageAmount": 90000.0
+            }
+          }
+        ]
+      }
+    }
+  },
+  "referenceTetherProperties": {},
+  "mechanicPools": {},
+  "referenceStatusProperties": {},
+  "mechanicEvents": [
+    {
+      "$type": "SpawnMechanicEvent",
+      "referenceMechanicName": "Exaflare",
+      "position": {
+        "x": 0.0,
+        "y": 3.0
+      }
+    },
+    {
+      "$type": "SpawnMechanicEvent",
+      "referenceMechanicName": "Exaflare",
+      "position": {
+        "x": 3.0,
+        "y": 0.0
+      },
+      "rotation": 90.0
+    },
+    {
+      "$type": "SpawnMechanicEvent",
+      "referenceMechanicName": "Exaflare",
+      "position": {
+        "x": 0.0,
+        "y": -3.0
+      },
+      "rotation": 180.0
+    },
+    {
+      "$type": "SpawnMechanicEvent",
+      "referenceMechanicName": "Exaflare",
+      "position": {
+        "x": -3.0,
+        "y": 0.0
+      },
+      "rotation": 270.0
+    }
+  ]
+}
