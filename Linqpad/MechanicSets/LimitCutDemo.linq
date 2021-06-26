@@ -211,7 +211,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Rectangle,
-			collisionShapeParams = new Vector4(40, 2),
+			collisionShapeParams = new Vector4(40, 3),
 			colorHtml = "#ffff00",
 			visible = true,
 			isTargeted = true,
