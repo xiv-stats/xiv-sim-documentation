@@ -167,7 +167,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 						isVisible = false,
 					},
 
-					new WaitEvent { timeToWait = 6 },
+					new WaitEvent { timeToWait = 4 },
 					new StartCastBar { castName = "Super Jump", duration = 4 },
 					new WaitEvent { timeToWait = 4 },
 
@@ -175,11 +175,11 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 					new SpawnTargetedEvents { referenceMechanicName = "SuperJump", isPositionRelative = true, spawnOnTarget = true, targetingScheme = new TargetSpecificProximityPlayers { targetNthFarthest = true, targetIds = new List<int> {0} } },
 
 					new WaitEvent { timeToWait = 0.2f },
-					new SetEnemyMovement {movementTime = -1, moveToTarget = new TargetSpecificProximityPlayers { targetNthFarthest = true, targetIds = new List<int> {0} } },
-					new WaitEvent { timeToWait = 1 },
+					new SetEnemyMovement {movementTime = -2, moveToTarget = new TargetSpecificProximityPlayers { targetNthFarthest = true, targetIds = new List<int> {0} } },
+					new WaitEvent { timeToWait = 2 },
 					new SpawnMechanicEvent { referenceMechanicName = "ApocRay", isPositionRelative = true, isRotationRelative = true },
 
-					new WaitEvent { timeToWait = 12.3f },
+					new WaitEvent { timeToWait = 13.3f },
 					new StartCastBar { castName = "Missile Command", duration = 3 },
 
 					new WaitEvent {timeToWait = float.PositiveInfinity }
