@@ -1,0 +1,166 @@
+{
+  "referenceMechanicProperties": {
+    "DrawIn": {
+      "collisionShapeParams": {
+        "x": 0.3,
+        "y": 360.0,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "colorHtml": "#d800ff99",
+      "visible": true,
+      "mechanic": {
+        "$type": "ExecuteMultipleEvents",
+        "events": [
+          {
+            "$type": "WaitEvent",
+            "timeToWait": 1.0
+          },
+          {
+            "$type": "ApplyEffectToTargetOnly",
+            "effects": [
+              {
+                "$type": "KnockbackEffect",
+                "isDrawIn": true,
+                "knockbackDistance": 1.0,
+                "additionalKnockbackSpeed": 5.0
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "DrawInLeft": {
+      "visible": false,
+      "mechanic": {
+        "$type": "ExecuteMultipleEvents",
+        "events": [
+          {
+            "$type": "ApplyEffectToTargetOnly",
+            "effect": {
+              "$type": "ApplyStatusEffect",
+              "referenceStatusName": "Stun"
+            }
+          },
+          {
+            "$type": "SpawnTargetedEvents",
+            "targetingScheme": {
+              "$type": "TargetExistingTarget"
+            },
+            "referenceMechanicName": "DrawIn",
+            "position": {
+              "x": -3.0,
+              "y": 0.0
+            },
+            "isPositionRelative": true,
+            "isRotationRelative": true,
+            "spawnOnTarget": true
+          }
+        ]
+      }
+    },
+    "LeftWithThee": {
+      "visible": false,
+      "mechanic": {
+        "$type": "ExecuteMultipleEvents",
+        "events": [
+          {
+            "$type": "ApplyEffectToTargetOnly",
+            "effect": {
+              "$type": "ApplyStatusEffect",
+              "referenceStatusName": "LeftWithThee"
+            }
+          },
+          {
+            "$type": "SpawnVisualObject",
+            "textureFilePath": "Mechanics/Resources/Mark1.png",
+            "relativePosition": {
+              "x": -3.0,
+              "y": 0.6,
+              "z": 0.0
+            },
+            "scale": {
+              "x": 0.8,
+              "y": 0.8,
+              "z": 1.0
+            },
+            "colorHtml": "#d800ff",
+            "spawnOnPlayer": true,
+            "isBillboard": true,
+            "visualDuration": 5.0
+          },
+          {
+            "$type": "SpawnVisualObject",
+            "textureFilePath": "Mechanics/Resources/LimitCut-1.png",
+            "relativePosition": {
+              "x": -3.0,
+              "y": 0.1,
+              "z": 0.0
+            },
+            "eulerAngles": {
+              "x": 90.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "colorHtml": "#d800ff99",
+            "spawnOnPlayer": true,
+            "visualDuration": 5.0
+          }
+        ]
+      }
+    }
+  },
+  "referenceTetherProperties": {},
+  "mechanicPools": {},
+  "referenceStatusProperties": {
+    "LeftWithThee": {
+      "$type": "SpawnMechanicOnExpire",
+      "referenceMechanicName": "DrawInLeft",
+      "statusIconPath": "Mechanics/Resources/LeftWithThee.png",
+      "statusName": "Larboard With Thee",
+      "statusDescription": "When this effect ends, you will be spawned and forcibly moved leftwards.",
+      "duration": 5.0
+    },
+    "Stun": {
+      "statusIconPath": "Mechanics/Resources/Stun.png",
+      "statusName": "Stun",
+      "statusDescription": "When this effect ends, you will be spawned and forcibly moved leftwards.",
+      "disableType": 3,
+      "duration": 3.0
+    }
+  },
+  "mechanicEvents": [
+    {
+      "$type": "SpawnVisualObject",
+      "textureFilePath": "Mechanics/Resources/ArenaSquare4x4.png",
+      "relativePosition": {
+        "x": 0.0,
+        "y": -0.001,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 90.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 15.8637,
+        "y": 15.8637,
+        "z": 1.0
+      },
+      "visualDuration": "Infinity"
+    },
+    {
+      "$type": "SpawnTargetedEvents",
+      "targetingScheme": {
+        "$type": "TargetAllPlayers"
+      },
+      "referenceMechanicName": "LeftWithThee"
+    }
+  ]
+}
