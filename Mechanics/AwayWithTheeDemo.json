@@ -129,7 +129,7 @@
     "Stun": {
       "statusIconPath": "Mechanics/Resources/Stun.png",
       "statusName": "Stun",
-      "statusDescription": "When this effect ends, you will be spawned and forcibly moved leftwards.",
+      "statusDescription": "Unable to execute actions.",
       "disableType": 3,
       "duration": 3.0
     }

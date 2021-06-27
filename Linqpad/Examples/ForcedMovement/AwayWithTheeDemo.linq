@@ -103,7 +103,7 @@ mechanicData.referenceStatusProperties = new Dictionary<string, StatusEffectData
 		{
 			statusIconPath = "Mechanics/Resources/Stun.png",
 			statusName = "Stun",
-			statusDescription = "When this effect ends, you will be spawned and forcibly moved leftwards.",
+			statusDescription = "Unable to execute actions.",
 			duration = 3f,
 			disableType = DisableType.Movement | DisableType.Actions
 		}
