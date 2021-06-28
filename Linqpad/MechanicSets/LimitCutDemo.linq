@@ -68,13 +68,11 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShapeParams = new Vector4(4.2f, 360),
-			colorHtml = "#ff5a00",
-			visible = true,
+			visible = false,
 			mechanic = new ExecuteMultipleEvents
 			{
 				events = new List<MechanicEvent>
 				{
-					new WaitEvent { timeToWait = 0.2f },
 					new ApplyEffectToPlayers
 					{
 						effects = new List<MechanicEffect>
@@ -82,9 +80,21 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 							new DamageEffect {damageAmount = 400000, damageType = "Magic", name = "Hawk Blaster" },
 							new ApplyStatusEffect { referenceStatusName = "MagicVuln" }
 						}
-					}
+					},
+					new WaitEvent { timeToWait = 1 },
+					new SpawnMechanicEvent { referenceMechanicName = "HawkBlasterVisual", isPositionRelative = true }
 				}
 			}
+		}
+	},
+	{
+		"HawkBlasterVisual",
+		new MechanicProperties
+		{
+			collisionShapeParams = new Vector4(4.2f, 360),
+			colorHtml = "#ff5a00",
+			visible = true,
+			mechanic = new WaitEvent { timeToWait = 0.2f },
 		}
 	},
 	{
@@ -180,18 +190,25 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		}
 	},
 	{
+		"SetVisible",
+		new MechanicProperties {
+			visible = true,
+		}
+	},
+	{
 		"AlphaSword",
 		new MechanicProperties
 		{
 			collisionShapeParams = new Vector4(10, 90),
 			colorHtml = "#ffff00",
-			visible = true,
+			visible = false,
 			isTargeted = true,
 			mechanic = new ExecuteMultipleEvents
 			{
 				events = new List<MechanicEvent>
 				{
 					new WaitEvent { timeToWait = 0.2f },
+					new ModifyMechanicEvent { referenceMechanicName = "SetVisible" },
 					new ApplyEffectToPlayers
 					{
 						effects = new List<MechanicEffect>
@@ -213,13 +230,14 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 			collisionShape = CollisionShape.Rectangle,
 			collisionShapeParams = new Vector4(40, 3),
 			colorHtml = "#ffff00",
-			visible = true,
+			visible = false,
 			isTargeted = true,
 			mechanic = new ExecuteMultipleEvents
 			{
 				events = new List<MechanicEvent>
 				{
 					new WaitEvent { timeToWait = 0.2f },
+					new ModifyMechanicEvent { referenceMechanicName = "SetVisible" },
 					new ApplyEffectToPlayers
 					{
 						condition = new CheckPlayerFacingAway(),
