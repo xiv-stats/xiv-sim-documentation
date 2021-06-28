@@ -78,9 +78,9 @@ In C#, it is a dictionary where the keys are the reference names and the values 
 MechanicData data = new MechanicData();
 data.referenceMechanicProperties = new Dictionary<string, MechanicProperties>();
 
-referenceMechanicProperties["MechanicName1"] = new MechanicProperties();
-referenceMechanicProperties["MechanicName2"] = new MechanicProperties();
-referenceMechanicProperties["MechanicName3"] = new MechanicProperties();
+data.referenceMechanicProperties["MechanicName1"] = new MechanicProperties();
+data.referenceMechanicProperties["MechanicName2"] = new MechanicProperties();
+data.referenceMechanicProperties["MechanicName3"] = new MechanicProperties();
 ...
 ```
 
