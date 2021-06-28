@@ -12,8 +12,8 @@
 1. In order to host a room for multiplayer, you will need to enable port forwarding on your router. The steps for this will be different for each router.
 2. The following settings should be used for port forwarding:
    - **Service Type:** TCP/UDP
-   - **Internal Ports:** 7777~7777
-   - **External Ports:** 7777~7777
+   - **Internal Ports:** 7777~7778
+   - **External Ports:** 7777~7778
    - **Server IPv4:** (The local IP of the computer that you will be running the simulator on.)
 2. Once port forwarding is set up, you will be able to host by sharing your [public IP](https://whatismyipaddress.com/).
 
