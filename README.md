@@ -17,6 +17,8 @@
    - **Server IPv4:** (The local IP of the computer that you will be running the simulator on.)
 2. Once port forwarding is set up, you will be able to host by sharing your [public IP](https://whatismyipaddress.com/).
 
+> ⚠**Note about checking if port forwarding is working:** Many online port forward checkers are not reliable and will report your port is closed even if it isn't. The best way to check is to have someone try to connect to you using the simulator. It should take a couple seconds for them to connect.
+
 ---
 
 # Scripting Setup (C#)
