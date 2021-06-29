@@ -1,12 +1,12 @@
 <Query Kind="Statements">
-  <Reference>E:\Downloads\xiv\xivsim\XivMechanicSimNetworked_Data\Managed\Assembly-CSharp.dll</Reference>
-  <Reference>E:\Downloads\xiv\xivsim\XivMechanicSimNetworked_Data\Managed\UnityEngine.CoreModule.dll</Reference>
+  <Reference Relative="..\..\..\XivMechanicSimNetworked\Library\ScriptAssemblies\Assembly-CSharp.dll">D:\src\Unity\XivMechanicSimNetworked\Library\ScriptAssemblies\Assembly-CSharp.dll</Reference>
+  <Reference>&lt;ProgramFilesX64&gt;\Unity\Hub\Editor\2020.3.6f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</Reference>
   <Namespace>UnityEngine</Namespace>
 </Query>
 
 var mechanicName = "QuickmarchDemo";
-var baseOutputPath = @"E:\Downloads\xiv\xivsim\";
-var buildOutputPath = @"E:\Downloads\xiv\xivsim\Build";
+var baseOutputPath = @"D:\src\Unity\XivMechanicSimNetworked";
+var buildOutputPath = @"D:\src\Unity\xiv-sim-mechanics";
 
 var mechanicData = new MechanicData();
 
@@ -465,7 +465,7 @@ mechanicData.referenceTetherProperties = new Dictionary<string, TetherProperties
 		new TetherProperties
 		{
 			colorHtml = "#00ff60",
-			tetherDuration = 6,
+			tetherDuration = 7,
 			interceptMechanic = new SwitchTetheredPlayer(),
 			oneTetherPerPlayer = true,
 			tetherTag = "TempestWing",
@@ -492,10 +492,8 @@ mechanicData.referenceStatusProperties = new Dictionary<string, StatusEffectData
 		"MegaflareMark",
 		new StatusEffectData
 		{
-			statusIconPath = "Mechanics/Resources/Windburn.png",
 			statusName = "Marked for Megaflare",
 			statusDescription = "Chosen to share the Megaflare stack.",
-			// statusHidden = true,
 			duration = 7,
 		}
 	}
