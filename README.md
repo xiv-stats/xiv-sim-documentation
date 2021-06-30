@@ -22,7 +22,7 @@
 ---
 
 # Scripting Setup (C#)
-As of the [`2021-06-24-v2`](https://github.com/xiv-stats/xiv-sim-documentation/releases/tag/2021-06-24-v2) release, you can now create the mechanic json files using C#. You can use any IDE/scripting environment that you would like.
+As of the [`20210624-v2`](https://github.com/xiv-stats/xiv-sim-documentation/releases/tag/20210624-v2) release, you can now create the mechanic json files using C#. You can use any IDE/scripting environment that you would like.
 
 In order to set up your project, you will need to reference the following 2 DLLs in your project, located in the `XivMechanicSimNetworked_Data/Managed` folder:
 
