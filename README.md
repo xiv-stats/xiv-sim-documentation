@@ -6,7 +6,8 @@
 
 #### Setup Guide
 1. Download and extract the latest version from the [releases](https://github.com/xiv-stats/xiv-sim-documentation/releases) page.
-2. If it is the first time you are running the simulator, you can click the **"Redownload Mechanic Files From Github"** button, which will automatically download the latest mechanic files files from [here](https://github.com/xiv-stats/xiv-sim-mechanics) and place them in the correct place.
+2. If it is the first time you are running the simulator, you can click the **"Redownload Mechanic Files From Github"** button, which will automatically download the latest mechanic files files and place them in the correct place.
+   - You can also download the mechanics folder manually from [here](https://github.com/xiv-stats/xiv-sim-mechanics) as well, and put it in the root directory of the app.
 
 #### Host Setup
 1. In order to host a room for multiplayer, you will need to enable port forwarding on your router. The steps for this will be different for each router.
