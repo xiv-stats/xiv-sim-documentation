@@ -40,7 +40,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				events = new List<MechanicEvent>
 				{
 					new SpawnVisualObject { textureFilePath = "Mechanics/Resources/Bahamut.png", colorHtml = "#0a4d8b", visualDuration = 5, relativePosition = Vector3.up, scale = new Vector3(1, 1, 1), eulerAngles = new Vector3(0, 180, 0), isRotationRelative = true },
-					new WaitEvent { timeToWait = 1 },
+					new WaitEvent { timeToWait = 2 },
 					new ModifyMechanicEvent { referenceMechanicName = "SnapshotDive" },
 					new SpawnVisualObject { textureFilePath = "Mechanics/Resources/Mark1.png", colorHtml = "#0a4d8b", visualDuration = 4, spawnOnPlayer = true, relativePosition = Vector3.up, scale = new Vector3(1, 1, 1), isBillboard = true },
 					new WaitEvent { timeToWait = 3.8f },
@@ -65,14 +65,27 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 			{
 				events = new List<MechanicEvent>
 				{
-					new WaitEvent { timeToWait = 2 },
-					new ExecuteRandomEvents { mechanicPoolName = "TowerPool" },
-					new WaitEvent { timeToWait = 1 },
+					new WaitEvent { timeToWait = 3 },
 					new ReshufflePlayerIds(),
-					new SpawnTargetedEvents { referenceMechanicName = "MegaflareTarget", targetingScheme = new TargetSpecificPlayerIdsByClass {classType = PlayerClassType.Tank, targetIds = new List<int>{0} } },
-					new SpawnTargetedEvents { referenceMechanicName = "MegaflareTarget", targetingScheme = new TargetSpecificPlayerIdsByClass {classType = PlayerClassType.Healer, targetIds = new List<int>{0} } },
-					new SpawnTargetedEvents { referenceMechanicName = "MegaflareTarget", targetingScheme = new TargetSpecificPlayerIdsByClass {classType = PlayerClassType.Dps, targetIds = new List<int>{0, 1} } },
-					new SpawnTargetedEvents { referenceMechanicName = "MegaflareStack", targetingScheme = new TargetPlayersWithStatusEffect { statusEffectName = "MegaflareMark", numTargets = 1 } },
+					new SpawnTargetedEvents { referenceMechanicName = "MegaflareTarget", targetingScheme =
+						new UnionTargetingSchemes {
+							targetingSchemes = new List<TargetingScheme> {
+								new TargetSpecificPlayerIdsByClass {classType = PlayerClassType.Tank, targetIds = new List<int>{0} },
+								new TargetSpecificPlayerIdsByClass {classType = PlayerClassType.Healer, targetIds = new List<int>{0} },
+								new TargetSpecificPlayerIdsByClass {classType = PlayerClassType.Dps, targetIds = new List<int>{0, 1} },
+							}
+						}
+					},
+					new SpawnTargetedEvents
+					{
+						referenceMechanicName = "MegaflareStack",
+						targetingScheme = new TargetRandomPlayers
+						{
+							numTargets = 0,                                    	                       // Get all players in a random order
+							targetCondition = new CheckPlayerStatus { statusName = "MegaflareMark" },  // Filter to only players marked by megaflare
+							totalTargetsNeeded = 1,                                                    // Select one of the players to place the stack on
+						}
+					},
 				}
 			}
 		}
@@ -87,16 +100,16 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				events = new List<MechanicEvent>
 				{
 					new SpawnVisualObject { textureFilePath = "Mechanics/Resources/Nael.png", colorHtml = "#a917bf", visualDuration = float.PositiveInfinity, relativePosition = Vector3.up, scale = new Vector3(1, 1, 1), eulerAngles = new Vector3(0, 180, 0), isRotationRelative = true },
-					new WaitEvent { timeToWait = 3.9f },
-					new SpawnTargetedEvents { referenceMechanicName = "Stack", spawnOnTarget = true, isPositionRelative = true, targetingScheme = new TargetRandomPlayers { numTargets = 1 } },
-					new WaitEvent { timeToWait = 7 },
-					new SpawnTargetedEvents { referenceMechanicName = "Hypernova", spawnOnTarget = true, isPositionRelative = true, targetingScheme = new TargetRandomPlayers { numTargets = 1 } },
+					new WaitEvent { timeToWait = 4.9f },
+					new SpawnTargetedEvents { referenceMechanicName = "Stack", spawnOnTarget = true, isPositionRelative = true, targetingScheme = new TargetRandomPlayers() },
+					new WaitEvent { timeToWait = 8 },
+					new SpawnTargetedEvents { referenceMechanicName = "Hypernova", spawnOnTarget = true, isPositionRelative = true, targetingScheme = new TargetRandomPlayers() },
 					new WaitEvent { timeToWait = 1.6f },
-					new SpawnTargetedEvents { referenceMechanicName = "Hypernova", spawnOnTarget = true, isPositionRelative = true, targetingScheme = new TargetRandomPlayers { numTargets = 1 } },
+					new SpawnTargetedEvents { referenceMechanicName = "Hypernova", spawnOnTarget = true, isPositionRelative = true, targetingScheme = new TargetRandomPlayers() },
 					new WaitEvent { timeToWait = 1.6f },
-					new SpawnTargetedEvents { referenceMechanicName = "Hypernova", spawnOnTarget = true, isPositionRelative = true, targetingScheme = new TargetRandomPlayers { numTargets = 1 } },
+					new SpawnTargetedEvents { referenceMechanicName = "Hypernova", spawnOnTarget = true, isPositionRelative = true, targetingScheme = new TargetRandomPlayers() },
 					new WaitEvent { timeToWait = 1.6f },
-					new SpawnTargetedEvents { referenceMechanicName = "Hypernova", spawnOnTarget = true, isPositionRelative = true, targetingScheme = new TargetRandomPlayers { numTargets = 1 } },
+					new SpawnTargetedEvents { referenceMechanicName = "Hypernova", spawnOnTarget = true, isPositionRelative = true, targetingScheme = new TargetRandomPlayers() },
 				}
 			}
 		}
@@ -106,7 +119,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(1, 360),
+			collisionShapeParams = new Vector4(1.4f, 360),
 			colorHtml = "#ff60ab",
 			mechanic = new ExecuteMultipleEvents
 			{
@@ -151,7 +164,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				events = new List<MechanicEvent>
 				{
 					new SpawnVisualObject { textureFilePath = "Mechanics/Resources/Twintania.png", colorHtml = "#067743", visualDuration = float.PositiveInfinity, relativePosition = Vector3.up, scale = new Vector3(1, 1, 1), eulerAngles = new Vector3(0, 180, 0), isRotationRelative = true },
-					new WaitEvent { timeToWait = 1 },
+					new WaitEvent { timeToWait = 2 },
 					new SpawnTargetedEvents { referenceMechanicName = "Liquid Hell", spawnOnTarget = true, targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int> { 0 } } },
 					new WaitEvent { timeToWait = 1.2f },
 					new SpawnTargetedEvents { referenceMechanicName = "Liquid Hell", spawnOnTarget = true, targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int> { 0 } } },
@@ -177,11 +190,11 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				events = new List<MechanicEvent>
 				{
 					new ApplyEffectToPlayers { effect = new DamageEffect { damageAmount = 10000, damageType = "Damage", name = "Liquid Hell" } },
-					new WaitEvent { timeToWait = 6 },
+					new WaitEvent { timeToWait = 12 },
 				}
 			},
 			persistentTickInterval = 0.3f,
-			persistentActivationDelay = 2,
+			persistentActivationDelay = 3,
 			persistentMechanic = new ApplyEffectToPlayers { effect = new DamageEffect { damageAmount = 999999, damageType = "Damage", name = "Burns" } },
 		}
 	},
@@ -205,7 +218,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(1, 360),
+			collisionShapeParams = new Vector4(1.68f, 360),
 			colorHtml = "#ff4200",
 			isTargeted = true,
 			followSpeed = 10000,
@@ -277,7 +290,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 					new WaitEvent { timeToWait = 8 },
 					new CheckNumberOfPlayers
 					{
-						expressionFormat = "{0} = 1",
+						expressionFormat = "{0} >= 1",
 						failEvent = new SpawnMechanicEvent { referenceMechanicName = "Tower Fail", isPositionRelative = true }
 					},
 					new ApplyEffectToPlayers {
@@ -309,8 +322,10 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				{
 					new WaitEvent { timeToWait = 2 },
 					new SpawnTargetedEvents { referenceMechanicName = "BahamutMechanics", position = new Vector2(0, 7), isPositionRelative = true, isRotationRelative = true, targetingScheme = new TargetRandomPlayers() },
-					new SpawnMechanicEvent { referenceMechanicName = "TwinMechanics", position = new Vector2(-6f, -3.5f), isPositionRelative = true, isRotationRelative = true, rotation = 60 },
-					new SpawnMechanicEvent { referenceMechanicName = "NaelMechanics", position = new Vector2(6f, -3.5f), isPositionRelative = true, isRotationRelative = true, rotation = -60 }
+					new SpawnMechanicEvent { referenceMechanicName = "TwinMechanics", position = new Vector2(-5, -5), isPositionRelative = true, isRotationRelative = true, rotation = 60 },
+					new SpawnMechanicEvent { referenceMechanicName = "NaelMechanics", position = new Vector2(5, -5), isPositionRelative = true, isRotationRelative = true, rotation = -60 },
+					new WaitEvent { timeToWait = 8 },
+					new SpawnMechanicEvent { referenceMechanicName = "SpawnTowers", isRotationRelative = true },
 				}
 			}
 		}
@@ -326,8 +341,10 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				{
 					new WaitEvent { timeToWait = 2 },
 					new SpawnTargetedEvents { referenceMechanicName = "BahamutMechanics", position = new Vector2(0, 7), isPositionRelative = true, isRotationRelative = true, targetingScheme = new TargetRandomPlayers() },
-					new SpawnMechanicEvent { referenceMechanicName = "NaelMechanics", position = new Vector2(-6f, -3.5f), isPositionRelative = true, isRotationRelative = true, rotation = 60 },
-					new SpawnMechanicEvent { referenceMechanicName = "TwinMechanics", position = new Vector2(6f, -3.5f), isPositionRelative = true, isRotationRelative = true, rotation = -60 }
+					new SpawnMechanicEvent { referenceMechanicName = "NaelMechanics", position = new Vector2(-5, -5), isPositionRelative = true, isRotationRelative = true, rotation = 60 },
+					new SpawnMechanicEvent { referenceMechanicName = "TwinMechanics", position = new Vector2(5, -5), isPositionRelative = true, isRotationRelative = true, rotation = -60 },
+					new WaitEvent { timeToWait = 8 },
+					new SpawnMechanicEvent { referenceMechanicName = "SpawnTowers", isRotationRelative = true },
 				}
 			}
 		}
@@ -349,13 +366,6 @@ mechanicData.referenceStatusProperties = new Dictionary<string, StatusEffectData
 
 mechanicData.mechanicPools = new Dictionary<string, List<MechanicEvent>>
 {
-	{
-		"TowerPool",
-		new List<MechanicEvent> {
-			new SpawnMechanicEvent { referenceMechanicName = "SpawnTowers" },
-			new SpawnMechanicEvent { referenceMechanicName = "SpawnTowers", rotation = 45 }
-		}
-	},
 	{
 		"BossPool",
 		new List<MechanicEvent> {

@@ -598,7 +598,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(1, 360),
+			collisionShapeParams = new Vector4(1.4f, 360),
 			colorHtml = "#ff60ab",
 			mechanic = new ExecuteMultipleEvents
 			{
