@@ -10,7 +10,9 @@ var buildOutputPath = @"D:\src\Unity\xiv-sim-mechanics";
 
 var mechanicData = new MechanicData();
 
-var limitcutGap = 1.45f;
+var limitcutGap = 1.7f;
+var alphaSwordDelay = 1.0f;
+var blasstyChargeDelay = 1.3f;
 
 mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProperties>
 {
@@ -23,9 +25,11 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 			{
 				events = new List<MechanicEvent>
 				{
-					new WaitEvent { timeToWait = 2 },
-					new StartCastBar { castName = "Limit Cut", duration = 2 },
-					new WaitEvent { timeToWait = 3.5f },
+					new WaitEvent { timeToWait = 2f },
+					new StartCastBar { castName = "Limit Cut", duration = 1f },
+					new WaitEvent { timeToWait = 5f },
+					new SetEnemyVisible  { visible = false },
+					new WaitEvent { timeToWait = 0.5f },
 					new SpawnTargetedEvents { referenceMechanicName = "LimitCutMarker-1", targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int>{0}, dropExtraEvents = true } },
 					new SpawnTargetedEvents { referenceMechanicName = "LimitCutMarker-2", targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int>{1}, dropExtraEvents = true } },
 					new SpawnTargetedEvents { referenceMechanicName = "LimitCutMarker-3", targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int>{2}, dropExtraEvents = true } },
@@ -35,53 +39,47 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 					new SpawnTargetedEvents { referenceMechanicName = "LimitCutMarker-7", targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int>{6}, dropExtraEvents = true } },
 					new SpawnTargetedEvents { referenceMechanicName = "LimitCutMarker-8", targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int>{7}, dropExtraEvents = true } },
 					
-					new WaitEvent { timeToWait = 6.5f - limitcutGap },
-					new SetEnemyVisible  { visible = false },
-					new WaitEvent { timeToWait = limitcutGap },
-					new SetEnemyMovement { movementTime = 0.1f, moveToTarget = new TargetSpecificPlayerIds { targetIds = new List<int>{0} }, position = new Vector3(0, -1) },
-					new WaitEvent { timeToWait = 0.1f },
+					new WaitEvent { timeToWait = 8.0f },
+					new SetEnemyMovement { movementTime = 0.01f, moveToTarget = new TargetSpecificPlayerIds { targetIds = new List<int>{0} }, position = new Vector3(0, -1) },
+					new WaitEvent { timeToWait = 0.01f },
 					new SetEnemyMovement { movementTime = -1, moveToTarget =new TargetSpecificPlayerIds { targetIds = new List<int>{0} } },
-					new WaitEvent { timeToWait = 0.1f },
 					new SetEnemyVisible { visible = true },
-					new WaitEvent { timeToWait = 1.5f },
+					new WaitEvent { timeToWait = alphaSwordDelay },
 					new SpawnTargetedEvents { referenceMechanicName = "AlphaSword", isPositionRelative = true, targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int> {0} } },
-					new WaitEvent { timeToWait = 1.5f },
+					new WaitEvent { timeToWait = blasstyChargeDelay },
 					new SpawnTargetedEvents { referenceMechanicName = "BlasstyCharge", isPositionRelative = true, targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int> {1} } },
 					new SetEnemyVisible { visible = false },
 
 					new WaitEvent { timeToWait = limitcutGap },
-					new SetEnemyMovement { movementTime = 0.1f, moveToTarget = new TargetSpecificPlayerIds { targetIds = new List<int>{2} }, position = new Vector3(0, -1) },
-					new WaitEvent { timeToWait = 0.1f },
+					new SetEnemyMovement { movementTime = 0.01f, moveToTarget = new TargetSpecificPlayerIds { targetIds = new List<int>{2} }, position = new Vector3(0, -1) },
+					new WaitEvent { timeToWait = 0.01f },
 					new SetEnemyMovement { movementTime = -1, moveToTarget =new TargetSpecificPlayerIds { targetIds = new List<int>{2} } },
-					new WaitEvent { timeToWait = 0.1f },
 					new SetEnemyVisible { visible = true },
-					new WaitEvent { timeToWait = 1.5f },
+					new WaitEvent { timeToWait = alphaSwordDelay },
 					new SpawnTargetedEvents { referenceMechanicName = "AlphaSword", isPositionRelative = true, targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int> {2} } },
-					new WaitEvent { timeToWait = 1.5f },
+					new WaitEvent { timeToWait = blasstyChargeDelay },
 					new SpawnTargetedEvents { referenceMechanicName = "BlasstyCharge", isPositionRelative = true, targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int> {3} } },
 					new SetEnemyVisible { visible = false },
 					
 					new WaitEvent { timeToWait = limitcutGap },
-					new SetEnemyMovement { movementTime = 0.1f, moveToTarget = new TargetSpecificPlayerIds { targetIds = new List<int>{4} }, position = new Vector3(0, -1) },
-					new WaitEvent { timeToWait = 0.1f },
+					new SetEnemyMovement { movementTime = 0.01f, moveToTarget = new TargetSpecificPlayerIds { targetIds = new List<int>{4} }, position = new Vector3(0, -1) },
+					new WaitEvent { timeToWait = 0.01f },
 					new SetEnemyMovement { movementTime = -1, moveToTarget =new TargetSpecificPlayerIds { targetIds = new List<int>{4} } },
-					new WaitEvent { timeToWait = 0.1f },
 					new SetEnemyVisible { visible = true },
-					new WaitEvent { timeToWait = 1.5f },
+					new WaitEvent { timeToWait = alphaSwordDelay },
 					new SpawnTargetedEvents { referenceMechanicName = "AlphaSword", isPositionRelative = true, targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int> {4} } },
-					new WaitEvent { timeToWait = 1.5f },
+					new WaitEvent { timeToWait = blasstyChargeDelay },
 					new SpawnTargetedEvents { referenceMechanicName = "BlasstyCharge", isPositionRelative = true, targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int> {5} } },
 					new SetEnemyVisible { visible = false },
 
 					new WaitEvent { timeToWait = limitcutGap },
-					new SetEnemyMovement { movementTime = 0.1f, moveToTarget = new TargetSpecificPlayerIds { targetIds = new List<int>{6} }, position = new Vector3(0, -1) },
-					new WaitEvent { timeToWait = 0.1f },
+					new SetEnemyMovement { movementTime = 0.01f, moveToTarget = new TargetSpecificPlayerIds { targetIds = new List<int>{6} }, position = new Vector3(0, -1) },
+					new WaitEvent { timeToWait = 0.01f },
 					new SetEnemyMovement { movementTime = -1, moveToTarget =new TargetSpecificPlayerIds { targetIds = new List<int>{6} } },
-					new WaitEvent { timeToWait = 0.1f },
 					new SetEnemyVisible { visible = true },
-					new WaitEvent { timeToWait = 1.5f },
+					new WaitEvent { timeToWait = alphaSwordDelay },
 					new SpawnTargetedEvents { referenceMechanicName = "AlphaSword", isPositionRelative = true, targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int> {6} } },
-					new WaitEvent { timeToWait = 1.5f },
+					new WaitEvent { timeToWait = blasstyChargeDelay },
 					new SpawnTargetedEvents { referenceMechanicName = "BlasstyCharge", isPositionRelative = true, targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int> {7} } },
 					new SetEnemyVisible { visible = false },
 					
@@ -99,12 +97,13 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 			{
 				events = new List<MechanicEvent>
 				{
-					new WaitEvent { timeToWait = 7 },
-					new StartCastBar { castName = "Void of Repentence", duration = 3 },
-					new WaitEvent { timeToWait = 5 },
+					new WaitEvent { timeToWait = 7f },
+					
+					new StartCastBar { castName = "Void of Repentence", duration = 2.5f },
+					new WaitEvent { timeToWait = 4.5f },
 					new ExecuteRandomEvents { mechanicPoolName = "Tower-Pool" },
 					
-					new WaitEvent { timeToWait = 5 },
+					new WaitEvent { timeToWait = 6.5f },
 					new StartCastBar { castName = "Sacrament", duration = 6 },
 
 					new WaitEvent { timeToWait = 6 },
@@ -112,12 +111,13 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 					new SpawnMechanicEvent { referenceMechanicName = "Sacrament", isPositionRelative = true, isRotationRelative = true, rotation = -90 },
 					new SpawnMechanicEvent { referenceMechanicName = "Sacrament", isPositionRelative = true, isRotationRelative = true, rotation = 90 },
 
-					new WaitEvent { timeToWait = 8 },
-					new StartCastBar { castName = "Incinerating Heat", duration = 5 },
+					new WaitEvent { timeToWait = 7.5f },
+					new StartCastBar { castName = "Incinerating Heat", duration = 4.5f },
 					new SpawnTargetedEvents { referenceMechanicName = "Stack", spawnOnTarget = true, targetingScheme = new TargetRandomPlayers { numTargets = 1 } },
 
-					new WaitEvent { timeToWait = 4 },
+					new WaitEvent { timeToWait = 4.0f },
 					new SpawnMechanicEvent { referenceMechanicName = "ClearVulns" },
+					new WaitEvent { timeToWait = 0.5f },
 					new SpawnTargetedEvents { referenceMechanicName = "Enumeration", spawnOnTarget = true, targetingScheme = new TargetSpecificPlayerIdsByClass { classType = PlayerClassType.Dps, targetIds = new List<int> {0, 1}, dropExtraEvents = false } },
 
 					new WaitEvent { timeToWait = float.PositiveInfinity }
@@ -134,9 +134,9 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 			{
 				events = new List<MechanicEvent>
 				{
-					new WaitEvent { timeToWait = 4 },
-					new StartCastBar { castName = "Link-Up", duration = 3 },
-					new WaitEvent { timeToWait = 3 },
+					new WaitEvent { timeToWait = 3.5f },
+					new StartCastBar { castName = "Link-Up", duration = 2.5f },
+					new WaitEvent { timeToWait = 3.5f },
 					
 					new SpawnEnemy
 					{
@@ -167,20 +167,20 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 						isVisible = false,
 					},
 
-					new WaitEvent { timeToWait = 4 },
-					new StartCastBar { castName = "Super Jump", duration = 4 },
+					new WaitEvent { timeToWait = 6 },
+					new StartCastBar { castName = "Super Jump", duration = 3f },
 					new WaitEvent { timeToWait = 4 },
 
-					new SetEnemyMovement { movementTime = 0.2f, moveToTarget = new TargetSpecificProximityPlayers { targetNthFarthest = true, targetIds = new List<int> {0} } },
+					new SetEnemyMovement { movementTime = 0.5f, moveToTarget = new TargetSpecificProximityPlayers { targetNthFarthest = true, targetIds = new List<int> {0} } },
 					new SpawnTargetedEvents { referenceMechanicName = "SuperJump", isPositionRelative = true, spawnOnTarget = true, targetingScheme = new TargetSpecificProximityPlayers { targetNthFarthest = true, targetIds = new List<int> {0} } },
 
-					new WaitEvent { timeToWait = 0.2f },
+					new WaitEvent { timeToWait = 0.5f },
 					new SetEnemyMovement {movementTime = -2, moveToTarget = new TargetSpecificProximityPlayers { targetNthFarthest = true, targetIds = new List<int> {0} } },
 					new WaitEvent { timeToWait = 2 },
 					new SpawnMechanicEvent { referenceMechanicName = "ApocRay", isPositionRelative = true, isRotationRelative = true },
 
-					new WaitEvent { timeToWait = 13.3f },
-					new StartCastBar { castName = "Missile Command", duration = 3 },
+					new WaitEvent { timeToWait = 10.3f },
+					new StartCastBar { castName = "Missile Command", duration = 2.5f },
 
 					new WaitEvent {timeToWait = float.PositiveInfinity }
 				}
@@ -196,10 +196,11 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 			{
 				events = new List<MechanicEvent>
 				{
-					new SpawnVisualObject { visualDuration = 6, colorHtml = "#8b4800", textureFilePath = "Mechanics/Resources/Chakram.png", relativePosition = new Vector3(0, 0.2f, 0), eulerAngles = new Vector3(90, 0, 0), isRotationRelative = true },
+					new SpawnVisualObject { visualDuration = 8, colorHtml = "#8b4800", textureFilePath = "Mechanics/Resources/Chakram.png", relativePosition = new Vector3(0, 0.2f, 0), eulerAngles = new Vector3(90, 0, 0), isRotationRelative = true },
 					new SpawnTargetedEvents { referenceMechanicName = "ChakramAoe", isPositionRelative = true, targetingScheme = new TargetRandomPlayers { numTargets = 1 } },
-					new StartCastBar { castName = "Eye of the Chakram", duration = 5 },
-					new WaitEvent { timeToWait = 5 },
+					new WaitEvent { timeToWait = 2 },
+					new StartCastBar { castName = "Eye of the Chakram", duration = 5.5f },
+					new WaitEvent { timeToWait = 5.5f },
 				}
 			}
 		}
@@ -231,7 +232,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				{
 					new WaitEvent { timeToWait = 0.1f },
 					new ModifyMechanicEvent { referenceMechanicName = "SnapshotTarget" },
-					new WaitEvent { timeToWait = 4.8f },
+					new WaitEvent { timeToWait = 7.9f },
 					new ModifyMechanicEvent { referenceMechanicName = "SetVisible" },
 					new ApplyEffectToPlayers {
 						effects = new List<MechanicEffect>
@@ -271,8 +272,8 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 			{
 				events = new List<MechanicEvent>
 				{
-					new SpawnMechanicEvent { referenceMechanicName = "Tower-Offset", rotation = 22.5f },
-					new SpawnMechanicEvent { referenceMechanicName = "Tower-Offset", rotation = 202.5f },
+					new SpawnMechanicEvent { referenceMechanicName = "Tower-Offset", rotation = 20f },
+					new SpawnMechanicEvent { referenceMechanicName = "Tower-Offset", rotation = 200f },
 				}
 			}
 		}
@@ -285,8 +286,8 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 			{
 				events = new List<MechanicEvent>
 				{
-					new SpawnMechanicEvent { referenceMechanicName = "Tower-Offset", rotation = -22.5f },
-					new SpawnMechanicEvent { referenceMechanicName = "Tower-Offset", rotation = -202.5f },
+					new SpawnMechanicEvent { referenceMechanicName = "Tower-Offset", rotation = -20f },
+					new SpawnMechanicEvent { referenceMechanicName = "Tower-Offset", rotation = -200f },
 				}
 			}
 		}
@@ -295,7 +296,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		"Tower-Offset",
 		new MechanicProperties {
 			visible = false,
-			mechanic = new SpawnMechanicEvent { referenceMechanicName = "Tower-A", position = new Vector2(4.22f, 0), isPositionRelative = true, isRotationRelative = true },
+			mechanic = new SpawnMechanicEvent { referenceMechanicName = "Tower-A", position = new Vector2(3.7f, 0), isPositionRelative = true, isRotationRelative = true },
 		}
 	},
 	{
@@ -303,12 +304,12 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(2.6f, 360),
+			collisionShapeParams = new Vector4(2.8f, 360),
 			colorHtml = "#0048ff",
 			mechanic = new ExecuteMultipleEvents
 			{
 				events = new List<MechanicEvent> {
-					new WaitEvent { timeToWait = 7.5f },
+					new WaitEvent { timeToWait = 10f },
 					new ApplyEffectToPlayers {
 						effects = new List<MechanicEffect>
 						{
@@ -331,7 +332,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(2, 360),
+			collisionShapeParams = new Vector4(1.9f, 360),
 			colorHtml = "#0048ff",
 			mechanic = new ExecuteMultipleEvents
 			{
@@ -364,7 +365,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 			mechanic = new ExecuteMultipleEvents
 			{
 				events = new List<MechanicEvent> {
-					new WaitEvent { timeToWait = 4.2f },
+					new WaitEvent { timeToWait = 3.6f },
 					new ApplyEffectToPlayers {
 						effects = new List<MechanicEffect>
 						{
@@ -386,7 +387,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Rectangle,
-			collisionShapeParams = new Vector4(40, 6f),
+			collisionShapeParams = new Vector4(40, 5.3f),
 			colorHtml = "#a0bbff",
 			mechanic = new ExecuteMultipleEvents
 			{
@@ -475,7 +476,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 			{
 				events = new List<MechanicEvent>
 				{
-					new WaitEvent { timeToWait = 0.2f },
+					new WaitEvent { timeToWait = 0.5f },
 					new ApplyEffectToPlayers {
 						condition = new CheckPlayerIsMechanicTarget(),
 						effects = new List<MechanicEffect>
@@ -520,7 +521,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				events = new List<MechanicEvent>
 				{
 					new SpawnVisualObject { textureFilePath = "Mechanics/Resources/Mark1.png", colorHtml = "#f0ba00", visualDuration = 5, spawnOnPlayer = true, relativePosition = Vector3.up * 0.8f, scale = new Vector3(0.8f, 0.8f, 1), isBillboard = true },
-					new WaitEvent { timeToWait = 5 },
+					new WaitEvent { timeToWait = 4.5f },
 					new ModifyMechanicEvent { referenceMechanicName = "SetVisible" },
 					new ApplyEffectToPlayers { effect = new DamageEffect { damageAmount = 800000, damageType = "Damage", name = "Incinerating Heat", maxStackAmount = 8 } },
 				}
@@ -542,7 +543,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				events = new List<MechanicEvent>
 				{
 					new SpawnVisualObject { textureFilePath = "Mechanics/Resources/LimitCut-3.png", colorHtml = "#00ffba", visualDuration = 5, spawnOnPlayer = true, relativePosition = Vector3.up * 0.8f, scale = Vector3.one, isBillboard = true },
-					new WaitEvent { timeToWait = 5 },
+					new WaitEvent { timeToWait = 4.5f },
 					new CheckNumberOfPlayers {
 						expressionFormat = "{0} = 3",
 						failEvent = new ApplyEffectToPlayers { effect = new DamageEffect { damageAmount = 9999999, damageType = "TrueDamage", name = "Enumeration" } },
@@ -582,8 +583,8 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				hitboxSize = 3,
 				visualPosition = new Vector3(0, 2f, 0),
 				visualScale = Vector3.one * 4,
-				position = new Vector2(0, 6),
-				rotation = 180,
+				position = new Vector2(0, -7.3f),
+				rotation = 0,
 				referenceMechanicName = "AlexMechanics",
 				isTargetable = false,
 			},
@@ -604,8 +605,8 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				hitboxSize = 2,
 				visualPosition = new Vector3(0, 1.5f, 0),
 				visualScale = Vector3.one * 3,
-				position = new Vector2(5, -5),
-				rotation = -45,
+				position = new Vector2(5, 5),
+				rotation = -135,
 				referenceMechanicName = "BJMechanics",
 				isTargetable = false,
 			},
@@ -626,8 +627,8 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				hitboxSize = 2,
 				visualPosition = new Vector3(0, 1.5f, 0),
 				visualScale = Vector3.one * 3,
-				position = new Vector2(-5, -5),
-				rotation = 45,
+				position = new Vector2(-5, 5),
+				rotation = 135,
 				referenceMechanicName = "BJMechanics",
 				isTargetable = false,
 			},
@@ -648,8 +649,8 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				hitboxSize = 2,
 				visualPosition = new Vector3(0, 1, 0),
 				visualScale = Vector3.one * 2,
-				position = new Vector2(-5, -5),
-				rotation = 45,
+				position = new Vector2(-5, 5),
+				rotation = 135,
 				referenceMechanicName = "LimitCutSequence",
 				isTargetable = false,
 			},
@@ -670,8 +671,8 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				hitboxSize = 2,
 				visualPosition = new Vector3(0, 1, 0),
 				visualScale = Vector3.one * 2,
-				position = new Vector2(5, -5),
-				rotation = -45,
+				position = new Vector2(5, 5),
+				rotation = -135,
 				referenceMechanicName = "LimitCutSequence",
 				isTargetable = false,
 			},
@@ -714,7 +715,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(25, 360, 7),
+			collisionShapeParams = new Vector4(25, 360, 6.5f),
 			colorHtml = "#8800FF",
 			persistentTickInterval = 0.2f,
 			persistentMechanic = new ApplyEffectToPlayers { effect = new DamageEffect { damageAmount = 9999999, damageType = "TrueDamage" } },
@@ -779,11 +780,11 @@ mechanicData.mechanicEvents = new List<MechanicEvent>
 	new SpawnMechanicEvent { referenceMechanicName = "ArenaBoundary" },
 	new SpawnVisualObject
 	{
-		textureFilePath = "Mechanics/Resources/ArenaCircle.png",
+		textureFilePath = "Mechanics/Resources/ArenaTeaP3.png",
 		visualDuration = float.PositiveInfinity,
 		relativePosition = new Vector3(0, -0.001f, 0),
 		eulerAngles = new Vector3(90, 0, 0),
-		scale = new Vector3(15.8637f, 15.8637f, 1),
+		scale = new Vector3(14f, 14f, 1),
 	},
 	new ExecuteMultipleEvents
 	{
