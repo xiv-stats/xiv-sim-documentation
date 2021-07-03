@@ -101,7 +101,6 @@ Almost everything about a specific mechanic is defined in the mechanic propertie
 | `persistentActivationDelay` | `0` | The number of seconds to wait before starting the persistent mechanic. |
 | `mechanic` | `null` | The mechanic event for this mechanic to do once (apply damage, spawn other mechanics, etc). See [Mechanic Events](MechanicEvents.md) for more details. |
 | `persistentMechanic` | `null` | The mechanic event that will be done every `persistentTickInterval` seconds. |
-| `staticTargetIds` | `null` | Used for targeting schemes. |
 | `mechanicTag` | `null` | An optional mechanic tag, mainly used for clearing all mechanics with a certain tag once an event is reached (boss hp, phase transition, etc). |
 
 Many of these properties can be omitted from the mechanic definition if they won't be needed. For example, a mechanic with `visible` set to false won't need to specify the `colorHtml`, and a non-persistent mechanic won't need to specify any of the persistent mechanic properties.
