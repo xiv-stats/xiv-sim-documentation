@@ -251,7 +251,7 @@ Refreshes the internal random ids for a specific mechanic pool.
 
 ### ReshufflePlayerIds <a name="ReshufflePlayerIds"/>
 
-Refreshes the internal random ids for all players (for targeting scenarios).
+Refreshes the internal random ids for all players [(more info)](TargetingScheme.md#PseudoRandomTargeting).
 
 (This event does not have any properties.)
 
