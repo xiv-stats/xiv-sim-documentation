@@ -107,6 +107,8 @@ Takes two targeting schemes and combines them together. Useful for combining mul
 
 # Pseudo-random Targeting <a name="PseudoRandomTargeting"/>
 
+There are many situations where you need to assign some random player mechanic A, and the remaining players mechanic B (chains/orbs in Light Rampant, etc). Each player has an internal random number, and you can target the player with the nth lowest number using the targeting schemes below. These internal random numbers do not change unless a [`ReshufflePlayerIds`](MechanicEvents.md#ReshufflePlayerIds) event happens, so you can use this to "remember" which player has received which mechanic.
+
 ### TargetSpecificPlayerIds <a name="TargetSpecificPlayerIds"/>
 
 ---
