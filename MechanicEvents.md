@@ -56,7 +56,7 @@ This event will spawn a mechanic at some position and rotation.
 
 ### SpawnTargetedEvents <a name="SpawnTargetedEvents"/>
 
-This event takes a *targeting scheme* and will spawn a copy of the mechanic for each player returned by the targeting scheme.
+This event takes a [*targeting scheme*](TargetingScheme.md) and will spawn a copy of the mechanic for each player returned by the targeting scheme.
 
 | Property Name | Default Value | Description |
 | --- | --- | --- |
@@ -66,7 +66,7 @@ This event takes a *targeting scheme* and will spawn a copy of the mechanic for 
 | `isPositionRelative` | `false` | Same as [SpawnMechanicEvent](#SpawnMechanicEvent). |
 | `isRotationRelative` | `false` | Same as [SpawnMechanicEvent](#SpawnMechanicEvent). |
 | `resetMechanicDepth` | `false` | Same as [SpawnMechanicEvent](#SpawnMechanicEvent). |
-| `targetingScheme` | N/A | A targeting scheme that specifies which players to target. |
+| `targetingScheme` | N/A | A [targeting scheme](TargetingScheme.md) that specifies which players to target. |
 | `spawnOnTarget` | `false` | If true, this will use the target player as the "parent" for the spawn position/rotation, rather than the parent mechanic. |
 
 > **NOTE:** This event will set the target of the spawned mechanics to the players obtained from the targeting scheme. However, those mechanics will also need to have `isTargeted` and `followSpeed` set if you want the spawned mechanic to move/aim at the player.
