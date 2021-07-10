@@ -498,7 +498,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(9, 90),
+			collisionShapeParams = new Vector4(8.5f, 90),
 			colorHtml = "#ff8400",
 			mechanic = new WaitEvent { timeToWait = 6 },
 			persistentTickInterval = 0.3f,
