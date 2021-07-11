@@ -23,7 +23,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 
 					new SpawnTargetedEvents { referenceMechanicName = "AutoAttack", targetingScheme = new TargetNthHighestAggro() },
 					new WaitEvent { timeToWait = 1 },
-
+					
 					new StartCastBar { castName = "Junction E7S", duration = 5},
 					new WaitEvent { timeToWait = 5 },
 					
@@ -122,7 +122,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		}
 	},
 	{
-		"Tower Fail",
+		"Tower Fail-L",
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Round,
@@ -137,6 +137,29 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 						effects = new List<MechanicEffect>
 						{
 							new DamageEffect { damageAmount = 120000, damageType = "Damage", name = "Inescapable Illumination" },
+							new ApplyStatusEffect { referenceStatusName = "Vuln" }
+						}
+					}
+				}
+			}
+		}
+	},
+	{
+		"Tower Fail-D",
+		new MechanicProperties
+		{
+			collisionShape = CollisionShape.Round,
+			collisionShapeParams = new Vector4(50, 360),
+			colorHtml = "#FF0000",
+			mechanic = new ExecuteMultipleEvents
+			{
+				events = new List<MechanicEvent>
+				{
+					new WaitEvent { timeToWait = 0.2f },
+					new ApplyEffectToPlayers {
+						effects = new List<MechanicEffect>
+						{
+							new DamageEffect { damageAmount = 120000, damageType = "Damage", name = "Inescapable Darkness" },
 							new ApplyStatusEffect { referenceStatusName = "Vuln" }
 						}
 					}
@@ -635,7 +658,7 @@ for (int i = 1; i <= 4; i++)
 				new CheckNumberOfPlayers
 				{
 					expressionFormat = $"{{0}} = {i}",
-					failEvent = new SpawnMechanicEvent { referenceMechanicName = "Tower Fail", isPositionRelative = true }
+					failEvent = new SpawnMechanicEvent { referenceMechanicName = "Tower Fail-L", isPositionRelative = true }
 				},
 				new ApplyEffectToPlayers {
 					condition = new CheckPlayerStatus
@@ -681,7 +704,7 @@ for (int i = 1; i <= 4; i++)
 				new CheckNumberOfPlayers
 				{
 					expressionFormat = $"{{0}} = {i}",
-					failEvent = new SpawnMechanicEvent { referenceMechanicName = "Tower Fail", isPositionRelative = true }
+					failEvent = new SpawnMechanicEvent { referenceMechanicName = "Tower Fail-D", isPositionRelative = true }
 				},
 				new ApplyEffectToPlayers {
 					condition = new CheckPlayerStatus
