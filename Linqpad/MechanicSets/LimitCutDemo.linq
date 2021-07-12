@@ -10,8 +10,11 @@ var buildOutputPath = @"D:\src\Unity\xiv-sim-mechanics";
 
 var mechanicData = new MechanicData();
 
-var limitcutGap = 1.45f;
 var hawkBlasterGap = 2.2f;
+
+var limitcutGap = 1.8f;
+var alphaSwordDelay = 1.0f;
+var blasstyChargeDelay = 1.7f;
 
 mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProperties>
 {
@@ -139,50 +142,46 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 					new WaitEvent { timeToWait = 2 },
 					new ExecuteRandomEvents { mechanicPoolName = "Hawkblaster-Pool" },
 					new WaitEvent { timeToWait = 6 },
-					new SetEnemyMovement { movementTime = 0.1f, moveToTarget = new TargetSpecificPlayerIds { targetIds = new List<int>{0} }, position = new Vector3(0, -1) },
-					new WaitEvent { timeToWait = 0.1f },
+					new SetEnemyMovement { movementTime = 0.01f, moveToTarget = new TargetSpecificPlayerIds { targetIds = new List<int>{0} }, position = new Vector3(0, -1) },
+					new WaitEvent { timeToWait = 0.01f },
 					new SetEnemyMovement { movementTime = -1, moveToTarget =new TargetSpecificPlayerIds { targetIds = new List<int>{0} } },
-					new WaitEvent { timeToWait = 0.1f },
 					new SetEnemyVisible { visible = true },
-					new WaitEvent { timeToWait = 1.5f },
+					new WaitEvent { timeToWait = alphaSwordDelay },
 					new SpawnTargetedEvents { referenceMechanicName = "AlphaSword", isPositionRelative = true, targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int> {0} } },
-					new WaitEvent { timeToWait = 1.5f },
+					new WaitEvent { timeToWait = blasstyChargeDelay },
 					new SpawnTargetedEvents { referenceMechanicName = "BlasstyCharge", isPositionRelative = true, targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int> {1} } },
 					new SetEnemyVisible { visible = false },
 
 					new WaitEvent { timeToWait = limitcutGap },
-					new SetEnemyMovement { movementTime = 0.1f, moveToTarget = new TargetSpecificPlayerIds { targetIds = new List<int>{2} }, position = new Vector3(0, -1) },
-					new WaitEvent { timeToWait = 0.1f },
+					new SetEnemyMovement { movementTime = 0.01f, moveToTarget = new TargetSpecificPlayerIds { targetIds = new List<int>{2} }, position = new Vector3(0, -1) },
+					new WaitEvent { timeToWait = 0.01f },
 					new SetEnemyMovement { movementTime = -1, moveToTarget =new TargetSpecificPlayerIds { targetIds = new List<int>{2} } },
-					new WaitEvent { timeToWait = 0.1f },
 					new SetEnemyVisible { visible = true },
-					new WaitEvent { timeToWait = 1.5f },
+					new WaitEvent { timeToWait = alphaSwordDelay },
 					new SpawnTargetedEvents { referenceMechanicName = "AlphaSword", isPositionRelative = true, targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int> {2} } },
-					new WaitEvent { timeToWait = 1.5f },
+					new WaitEvent { timeToWait = blasstyChargeDelay },
 					new SpawnTargetedEvents { referenceMechanicName = "BlasstyCharge", isPositionRelative = true, targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int> {3} } },
 					new SetEnemyVisible { visible = false },
-					
+
 					new WaitEvent { timeToWait = limitcutGap },
-					new SetEnemyMovement { movementTime = 0.1f, moveToTarget = new TargetSpecificPlayerIds { targetIds = new List<int>{4} }, position = new Vector3(0, -1) },
-					new WaitEvent { timeToWait = 0.1f },
+					new SetEnemyMovement { movementTime = 0.01f, moveToTarget = new TargetSpecificPlayerIds { targetIds = new List<int>{4} }, position = new Vector3(0, -1) },
+					new WaitEvent { timeToWait = 0.01f },
 					new SetEnemyMovement { movementTime = -1, moveToTarget =new TargetSpecificPlayerIds { targetIds = new List<int>{4} } },
-					new WaitEvent { timeToWait = 0.1f },
 					new SetEnemyVisible { visible = true },
-					new WaitEvent { timeToWait = 1.5f },
+					new WaitEvent { timeToWait = alphaSwordDelay },
 					new SpawnTargetedEvents { referenceMechanicName = "AlphaSword", isPositionRelative = true, targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int> {4} } },
-					new WaitEvent { timeToWait = 1.5f },
+					new WaitEvent { timeToWait = blasstyChargeDelay },
 					new SpawnTargetedEvents { referenceMechanicName = "BlasstyCharge", isPositionRelative = true, targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int> {5} } },
 					new SetEnemyVisible { visible = false },
 
 					new WaitEvent { timeToWait = limitcutGap },
-					new SetEnemyMovement { movementTime = 0.1f, moveToTarget = new TargetSpecificPlayerIds { targetIds = new List<int>{6} }, position = new Vector3(0, -1) },
-					new WaitEvent { timeToWait = 0.1f },
+					new SetEnemyMovement { movementTime = 0.01f, moveToTarget = new TargetSpecificPlayerIds { targetIds = new List<int>{6} }, position = new Vector3(0, -1) },
+					new WaitEvent { timeToWait = 0.01f },
 					new SetEnemyMovement { movementTime = -1, moveToTarget =new TargetSpecificPlayerIds { targetIds = new List<int>{6} } },
-					new WaitEvent { timeToWait = 0.1f },
 					new SetEnemyVisible { visible = true },
-					new WaitEvent { timeToWait = 1.5f },
+					new WaitEvent { timeToWait = alphaSwordDelay },
 					new SpawnTargetedEvents { referenceMechanicName = "AlphaSword", isPositionRelative = true, targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int> {6} } },
-					new WaitEvent { timeToWait = 1.5f },
+					new WaitEvent { timeToWait = blasstyChargeDelay },
 					new SpawnTargetedEvents { referenceMechanicName = "BlasstyCharge", isPositionRelative = true, targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int> {7} } },
 					new SetEnemyVisible { visible = false },
 				}
