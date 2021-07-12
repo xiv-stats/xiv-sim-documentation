@@ -222,7 +222,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Rectangle,
-			collisionShapeParams = new Vector4(40, 2),
+			collisionShapeParams = new Vector4(23.33f, 2),
 			colorHtml = "#ff7e00",
 			isTargeted = true,
 			visible = false,
@@ -296,7 +296,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		"Tower-Offset",
 		new MechanicProperties {
 			visible = false,
-			mechanic = new SpawnMechanicEvent { referenceMechanicName = "Tower-A", position = new Vector2(3.7f, 0), isPositionRelative = true, isRotationRelative = true },
+			mechanic = new SpawnMechanicEvent { referenceMechanicName = "Tower-A", position = new Vector2(4, 0), isPositionRelative = true, isRotationRelative = true },
 		}
 	},
 	{
@@ -304,7 +304,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(2.8f, 360),
+			collisionShapeParams = new Vector4(2.67f, 360),
 			colorHtml = "#0048ff",
 			mechanic = new ExecuteMultipleEvents
 			{
@@ -332,7 +332,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(1.9f, 360),
+			collisionShapeParams = new Vector4(2, 360),
 			colorHtml = "#0048ff",
 			mechanic = new ExecuteMultipleEvents
 			{
@@ -387,7 +387,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Rectangle,
-			collisionShapeParams = new Vector4(40, 5.3f),
+			collisionShapeParams = new Vector4(33.33f, 5.33f),
 			colorHtml = "#a0bbff",
 			mechanic = new ExecuteMultipleEvents
 			{
@@ -405,7 +405,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		"AlphaSword",
 		new MechanicProperties
 		{
-			collisionShapeParams = new Vector4(10, 90),
+			collisionShapeParams = new Vector4(8.33f, 90),
 			colorHtml = "#ffff00",
 			visible = false,
 			isTargeted = true,
@@ -434,7 +434,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Rectangle,
-			collisionShapeParams = new Vector4(40, 3),
+			collisionShapeParams = new Vector4(16.67f, 3.33f),
 			colorHtml = "#ffff00",
 			visible = false,
 			isTargeted = true,
@@ -470,7 +470,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(1.5f, 360),
+			collisionShapeParams = new Vector4(3.33f, 360),
 			colorHtml = "#ffc600",
 			mechanic = new ExecuteMultipleEvents
 			{
@@ -498,7 +498,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(8.5f, 90),
+			collisionShapeParams = new Vector4(8.33f, 90),
 			colorHtml = "#ff8400",
 			mechanic = new WaitEvent { timeToWait = 6 },
 			persistentTickInterval = 0.3f,
@@ -511,7 +511,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(1.5f, 360),
+			collisionShapeParams = new Vector4(1.67f, 360),
 			colorHtml = "#ff4200",
 			isTargeted = true,
 			followSpeed = 10000,
@@ -533,7 +533,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(1.5f, 360),
+			collisionShapeParams = new Vector4(1.67f, 360),
 			colorHtml = "#fffe9d",
 			isTargeted = true,
 			followSpeed = 10000,
@@ -583,7 +583,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				hitboxSize = 3,
 				visualPosition = new Vector3(0, 2f, 0),
 				visualScale = Vector3.one * 4,
-				position = new Vector2(0, -7.3f),
+				position = new Vector2(0, -7.33f),
 				rotation = 0,
 				referenceMechanicName = "AlexMechanics",
 				isTargetable = false,
@@ -715,7 +715,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(25, 360, 6.5f),
+			collisionShapeParams = new Vector4(25, 360, 6.67f),
 			colorHtml = "#8800FF",
 			persistentTickInterval = 0.2f,
 			persistentMechanic = new ApplyEffectToPlayers { effect = new DamageEffect { damageAmount = 9999999, damageType = "TrueDamage" } },
@@ -784,7 +784,7 @@ mechanicData.mechanicEvents = new List<MechanicEvent>
 		visualDuration = float.PositiveInfinity,
 		relativePosition = new Vector3(0, -0.001f, 0),
 		eulerAngles = new Vector3(90, 0, 0),
-		scale = new Vector3(14f, 14f, 1),
+		scale = new Vector3(14.2f, 14.2f, 1),
 	},
 	new ExecuteMultipleEvents
 	{
