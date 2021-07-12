@@ -10,9 +10,9 @@ var buildOutputPath = @"D:\src\Unity\xiv-sim-mechanics";
 
 var mechanicData = new MechanicData();
 
-var limitcutGap = 1.7f;
-var alphaSwordDelay = 1.0f;
-var blasstyChargeDelay = 1.3f;
+var limitcutGap = 1.63f;
+var alphaSwordDelay = 1.03f;
+var blasstyChargeDelay = 1.43f;
 
 mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProperties>
 {
