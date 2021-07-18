@@ -1,0 +1,74 @@
+{
+  "referenceMechanicProperties": {
+    "Knockback": {
+      "collisionShape": "Round",
+      "collisionShapeParams": {
+        "x": 3.0,
+        "y": 360.0,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "colorHtml": "#ff9600",
+      "mechanic": {
+        "$type": "ExecuteMultipleEvents",
+        "events": [
+          {
+            "$type": "WaitEvent",
+            "timeToWait": 3.0
+          },
+          {
+            "$type": "ApplyEffectToPlayers",
+            "effects": [
+              {
+                "$type": "DamageEffect",
+                "name": "Knockback",
+                "damageType": "Damage",
+                "damageAmount": 10000.0
+              },
+              {
+                "$type": "KnockbackEffect",
+                "knockbackDistance": 20.0
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "Wall": {
+      "isTerrain": true,
+      "collisionShape": "Rectangle",
+      "collisionShapeParams": {
+        "x": 10.0,
+        "y": 3.0,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "colorHtml": "#0078ff",
+      "mechanic": {
+        "$type": "WaitEvent",
+        "timeToWait": "Infinity"
+      }
+    }
+  },
+  "referenceTetherProperties": {},
+  "mechanicPools": {},
+  "referenceStatusProperties": {},
+  "mechanicEvents": [
+    {
+      "$type": "SpawnMechanicEvent",
+      "referenceMechanicName": "Knockback",
+      "position": {
+        "x": -2.0,
+        "y": 0.0
+      }
+    },
+    {
+      "$type": "SpawnMechanicEvent",
+      "referenceMechanicName": "Wall",
+      "position": {
+        "x": 4.0,
+        "y": -5.0
+      }
+    }
+  ]
+}
