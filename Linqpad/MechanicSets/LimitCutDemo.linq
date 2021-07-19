@@ -200,14 +200,12 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		{
 			collisionShapeParams = new Vector4(10, 90),
 			colorHtml = "#ffff00",
-			visible = false,
 			isTargeted = true,
 			mechanic = new ExecuteMultipleEvents
 			{
 				events = new List<MechanicEvent>
 				{
 					new WaitEvent { timeToWait = 0.2f },
-					new ModifyMechanicEvent { referenceMechanicName = "SetVisible" },
 					new ApplyEffectToPlayers
 					{
 						effects = new List<MechanicEffect>
@@ -229,14 +227,12 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 			collisionShape = CollisionShape.Rectangle,
 			collisionShapeParams = new Vector4(40, 3),
 			colorHtml = "#ffff00",
-			visible = false,
 			isTargeted = true,
 			mechanic = new ExecuteMultipleEvents
 			{
 				events = new List<MechanicEvent>
 				{
 					new WaitEvent { timeToWait = 0.2f },
-					new ModifyMechanicEvent { referenceMechanicName = "SetVisible" },
 					new ApplyEffectToPlayers
 					{
 						condition = new CheckPlayerFacingAway(),
