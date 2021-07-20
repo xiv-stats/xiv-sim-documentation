@@ -107,6 +107,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				events = new List<MechanicEvent>
 				{
 					new SpawnTargetedEvents { referenceMechanicName = "SetHealerThermals", targetingScheme = new TargetSpecificPlayerIdsByClass { classType = PlayerClassType.Healer, targetIds = new List<int> {0, 1} } },
+					new SetEnemyMovement { movementTime = float.NegativeInfinity },
 					new ExecuteRandomEvents { mechanicPoolName = "IfritTitanPool"},
 					new WaitEvent { timeToWait = 7.5f },
 					new ReshufflePlayerIds(),
