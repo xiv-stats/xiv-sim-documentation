@@ -4,7 +4,7 @@
 
 **Other Links:** [Discord](https://discord.gg/XjP3f2HXYy) | [Twitter](https://twitter.com/xiv_sim) | [Youtube](https://www.youtube.com/channel/UC_pX9gr7B-wd5nIBHafqiKw) | [Documentation (Wiki)](https://github.com/xiv-stats/xiv-sim-documentation/wiki)
 
-#### Setup Guide
+#### Setup Guide [(Google Doc Guide by Hoppy)](https://docs.google.com/document/d/e/2PACX-1vT9yEN-lBq05fPb5d0PgAWng3TIT2Zcb7_bSlbOFmpdnJd_Yk0uk_husdVzvniA9pcDo9bXiCRol7RR/pub)
 1. Download and extract the latest version from the [releases](https://github.com/xiv-stats/xiv-sim-documentation/releases) page.
 2. If it is the first time you are running the simulator, you can click the **"Redownload Mechanic Files From Github"** button, which will automatically download the latest mechanic files files and place them in the correct place.
    - You can also download the mechanics folder manually from [here](https://github.com/xiv-stats/xiv-sim-mechanics) as well, and put it in the root directory of the app.
