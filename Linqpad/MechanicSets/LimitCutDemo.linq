@@ -63,14 +63,14 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			visible = false,
-			mechanic = new SpawnMechanicEvent { referenceMechanicName = "HawkBlaster", position = new Vector2(5.9f, 0), isPositionRelative = true, isRotationRelative = true }
+			mechanic = new SpawnMechanicEvent { referenceMechanicName = "HawkBlaster", position = new Vector2(4.75f, 0), isPositionRelative = true, isRotationRelative = true }
 		}
 	},
 	{
 		"HawkBlaster",
 		new MechanicProperties
 		{
-			collisionShapeParams = new Vector4(4.2f, 360),
+			collisionShapeParams = new Vector4(3.3333f, 360),
 			visible = false,
 			mechanic = new ExecuteMultipleEvents
 			{
@@ -94,7 +94,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		"HawkBlasterVisual",
 		new MechanicProperties
 		{
-			collisionShapeParams = new Vector4(4.2f, 360),
+			collisionShapeParams = new Vector4(3.3333f, 360),
 			colorHtml = "#ff5a00",
 			visible = true,
 			mechanic = new WaitEvent { timeToWait = 0.2f },
@@ -226,7 +226,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Rectangle,
-			collisionShapeParams = new Vector4(40, 3),
+			collisionShapeParams = new Vector4(40, 3.33f),
 			colorHtml = "#ffff00",
 			isTargeted = true,
 			visible = true,
@@ -261,7 +261,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(25, 360, 7),
+			collisionShapeParams = new Vector4(25, 360, 6.6667f),
 			colorHtml = "#8800FF",
 			persistentTickInterval = 0.2f,
 			persistentMechanic = new ApplyEffectToPlayers { effect = new DamageEffect { damageAmount = 9999999, damageType = "TrueDamage" } },
@@ -330,7 +330,7 @@ mechanicData.mechanicEvents = new List<MechanicEvent>
 		visualDuration = float.PositiveInfinity,
 		relativePosition = new Vector3(0, -0.001f, 0),
 		eulerAngles = new Vector3(90, 0, 0),
-		scale = new Vector3(15.8637f, 15.8637f, 1),
+		scale = new Vector3(15.1082f, 15.1082f, 1),
 	},
 	new ExecuteMultipleEvents
 	{
