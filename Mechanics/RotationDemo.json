@@ -1,0 +1,1462 @@
+{
+  "referenceMechanicProperties": {
+    "ArenaBoundary": {
+      "collisionShape": "Round",
+      "collisionShapeParams": {
+        "x": 25.0,
+        "y": 360.0,
+        "z": 7.0,
+        "w": 0.0
+      },
+      "colorHtml": "#8800FF",
+      "persistentTickInterval": 0.2,
+      "persistentMechanic": {
+        "$type": "ApplyEffectToPlayers",
+        "effect": {
+          "$type": "DamageEffect",
+          "damageType": "TrueDamage",
+          "damageAmount": 9999999.0
+        }
+      }
+    },
+    "Explosion": {
+      "collisionShape": "Round",
+      "collisionShapeParams": {
+        "x": 12.0,
+        "y": 360.0,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "colorHtml": "#ff9600",
+      "mechanic": {
+        "$type": "ExecuteMultipleEvents",
+        "events": [
+          {
+            "$type": "WaitEvent",
+            "timeToWait": 0.5
+          },
+          {
+            "$type": "ApplyEffectToPlayers",
+            "effect": {
+              "$type": "DamageEffect",
+              "name": "CAT-Astrophe",
+              "damageType": "Damage",
+              "damageAmount": 30000.0
+            }
+          }
+        ]
+      }
+    },
+    "SnakeAOE": {
+      "collisionShape": "Rectangle",
+      "collisionShapeParams": {
+        "x": 14.0,
+        "y": 3.5,
+        "z": 0.0,
+        "w": 0.0
+      },
+      "colorHtml": "#ff9600",
+      "mechanic": {
+        "$type": "ExecuteMultipleEvents",
+        "events": [
+          {
+            "$type": "WaitEvent",
+            "timeToWait": 1.0
+          },
+          {
+            "$type": "ApplyEffectToPlayers",
+            "effect": {
+              "$type": "DamageEffect",
+              "name": "Snake",
+              "damageType": "Damage",
+              "damageAmount": 30000.0
+            }
+          }
+        ]
+      }
+    },
+    "SpawnPlanets": {
+      "visible": false,
+      "mechanic": {
+        "$type": "ExecuteMultipleEvents",
+        "events": [
+          {
+            "$type": "SpawnEnemy",
+            "enemyName": "Doomed Stars",
+            "textureFilePath": "Mechanics/Resources/Cat.png",
+            "maxHp": 35000000,
+            "hitboxSize": 1.0,
+            "isTargetable": false,
+            "showInEnemyList": false,
+            "referenceMechanicName": "SlowPlanet"
+          },
+          {
+            "$type": "SpawnEnemy",
+            "enemyName": "Doomed Stars",
+            "textureFilePath": "Mechanics/Resources/Cat.png",
+            "maxHp": 35000000,
+            "hitboxSize": 1.0,
+            "isTargetable": false,
+            "showInEnemyList": false,
+            "referenceMechanicName": "FastPlanet"
+          },
+          {
+            "$type": "WaitEvent",
+            "timeToWait": 5.5
+          },
+          {
+            "$type": "SpawnMechanicEvent",
+            "referenceMechanicName": "Explosion",
+            "position": {
+              "x": 7.0,
+              "y": 0.0
+            }
+          }
+        ]
+      }
+    },
+    "SpawnSnakes": {
+      "visible": false,
+      "mechanic": {
+        "$type": "ExecuteMultipleEvents",
+        "events": [
+          {
+            "$type": "SpawnEnemy",
+            "enemyName": "Snake",
+            "textureFilePath": "Mechanics/Resources/Snake.png",
+            "maxHp": 35000000,
+            "hitboxSize": 1.0,
+            "rotation": 90.0,
+            "showInEnemyList": false,
+            "referenceMechanicName": "Snake",
+            "position": {
+              "x": 0.0,
+              "y": 0.01
+            }
+          }
+        ]
+      }
+    },
+    "Snake": {
+      "visible": false,
+      "mechanic": {
+        "$type": "ExecuteMultipleEvents",
+        "events": [
+          {
+            "$type": "SpawnVisualObject",
+            "textureFilePath": "Mechanics/Resources/Snake.png",
+            "relativePosition": {
+              "x": 5.25,
+              "y": 1.0,
+              "z": -1.75
+            },
+            "eulerAngles": {
+              "x": 0.0,
+              "y": 180.0,
+              "z": 0.0
+            },
+            "scale": {
+              "x": 2.0,
+              "y": 2.0,
+              "z": 2.0
+            },
+            "colorHtml": "#2529bd",
+            "isRotationRelative": true,
+            "visualDuration": 7.5
+          },
+          {
+            "$type": "SpawnVisualObject",
+            "textureFilePath": "Mechanics/Resources/Snake.png",
+            "relativePosition": {
+              "x": 5.25,
+              "y": 1.0,
+              "z": 5.25
+            },
+            "eulerAngles": {
+              "x": 0.0,
+              "y": 180.0,
+              "z": 0.0
+            },
+            "scale": {
+              "x": 2.0,
+              "y": 2.0,
+              "z": 2.0
+            },
+            "colorHtml": "#2529bd",
+            "isRotationRelative": true,
+            "visualDuration": 7.5
+          },
+          {
+            "$type": "WaitEvent",
+            "timeToWait": 4.0
+          },
+          {
+            "$type": "SetEnemyMovementPath",
+            "path": {
+              "$type": "CircleMovementPath",
+              "degreesPerSecond": -30.0,
+              "radius": 0.01,
+              "startAngle": 90.0
+            }
+          },
+          {
+            "$type": "WaitEvent",
+            "timeToWait": 3.05
+          },
+          {
+            "$type": "SpawnMechanicEvent",
+            "referenceMechanicName": "SnakeAOE",
+            "position": {
+              "x": 7.0,
+              "y": -1.75
+            },
+            "rotation": -90.0,
+            "isPositionRelative": true,
+            "isRotationRelative": true
+          },
+          {
+            "$type": "SpawnMechanicEvent",
+            "referenceMechanicName": "SnakeAOE",
+            "position": {
+              "x": 7.0,
+              "y": 5.25
+            },
+            "rotation": -90.0,
+            "isPositionRelative": true,
+            "isRotationRelative": true
+          }
+        ]
+      }
+    },
+    "SlowPlanet": {
+      "visible": false,
+      "mechanic": {
+        "$type": "ExecuteMultipleEvents",
+        "events": [
+          {
+            "$type": "SetEnemyMovementPath",
+            "path": {
+              "$type": "CircleMovementPath",
+              "radius": 7.5,
+              "startAngle": -90.0
+            }
+          },
+          {
+            "$type": "SpawnVisualObject",
+            "textureFilePath": "Mechanics/Resources/Cat.png",
+            "relativePosition": {
+              "x": 0.0,
+              "y": 1.5,
+              "z": 0.0
+            },
+            "scale": {
+              "x": 2.0,
+              "y": 2.0,
+              "z": 2.0
+            },
+            "colorHtml": "#b429bd",
+            "isBillboard": true,
+            "visualDuration": 6.0
+          },
+          {
+            "$type": "WaitEvent",
+            "timeToWait": 1.0
+          },
+          {
+            "$type": "SetEnemyMovementPath",
+            "path": {
+              "$type": "CircleMovementPath",
+              "degreesPerSecond": 18.0,
+              "radius": 7.5,
+              "startAngle": -90.0
+            }
+          },
+          {
+            "$type": "WaitEvent",
+            "timeToWait": 5.0
+          }
+        ]
+      }
+    },
+    "FastPlanet": {
+      "visible": false,
+      "mechanic": {
+        "$type": "ExecuteMultipleEvents",
+        "events": [
+          {
+            "$type": "SetEnemyMovementPath",
+            "path": {
+              "$type": "CircleMovementPath",
+              "radius": 7.5,
+              "startAngle": 180.0
+            }
+          },
+          {
+            "$type": "SpawnVisualObject",
+            "textureFilePath": "Mechanics/Resources/Cat.png",
+            "relativePosition": {
+              "x": 0.0,
+              "y": 1.5,
+              "z": 0.0
+            },
+            "scale": {
+              "x": 2.0,
+              "y": 2.0,
+              "z": 2.0
+            },
+            "colorHtml": "#b429bd",
+            "isBillboard": true,
+            "visualDuration": 6.0
+          },
+          {
+            "$type": "WaitEvent",
+            "timeToWait": 1.0
+          },
+          {
+            "$type": "SetEnemyMovementPath",
+            "path": {
+              "$type": "CircleMovementPath",
+              "degreesPerSecond": 36.0,
+              "radius": 7.5,
+              "startAngle": 180.0
+            }
+          },
+          {
+            "$type": "WaitEvent",
+            "timeToWait": 5.0
+          }
+        ]
+      }
+    },
+    "StunPlayers": {
+      "visible": false,
+      "mechanic": {
+        "$type": "ApplyEffectToTargetOnly",
+        "effect": {
+          "$type": "ApplyStatusEffect",
+          "referenceStatusName": "Stun"
+        }
+      }
+    }
+  },
+  "referenceTetherProperties": {},
+  "mechanicPools": {},
+  "referenceStatusProperties": {
+    "Stun": {
+      "statusIconPath": "Mechanics/Resources/Stun.png",
+      "statusName": "Bind",
+      "statusDescription": "Unable to move.",
+      "disableType": "Movement",
+      "duration": 5.0
+    }
+  },
+  "mechanicEvents": [
+    {
+      "$type": "SpawnMechanicEvent",
+      "referenceMechanicName": "ArenaBoundary"
+    },
+    {
+      "$type": "SpawnVisualObject",
+      "textureFilePath": "Mechanics/Resources/ArenaSquare4x4.png",
+      "relativePosition": {
+        "x": 0.0,
+        "y": -0.001,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 90.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 18.0,
+        "y": 18.0,
+        "z": 1.0
+      },
+      "visualDuration": "Infinity"
+    },
+    {
+      "$type": "ExecuteMultipleEvents",
+      "events": [
+        {
+          "$type": "SpawnMechanicEvent",
+          "referenceMechanicName": "SpawnPlanets"
+        },
+        {
+          "$type": "SpawnMechanicEvent",
+          "referenceMechanicName": "SpawnSnakes"
+        },
+        {
+          "$type": "WaitEvent",
+          "timeToWait": 2.0
+        },
+        {
+          "$type": "ExecuteMultipleEventsParallel",
+          "events": [
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 8.0,
+                "y": 1.0,
+                "z": 0.0
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 7.936918,
+                "y": 1.0,
+                "z": 1.00266576
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": 82.8,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 7.74866533,
+                "y": 1.0,
+                "z": 1.989519
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": 75.6,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 7.438212,
+                "y": 1.0,
+                "z": 2.944996
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": 68.4,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 7.0104537,
+                "y": 1.0,
+                "z": 3.85402918
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": 61.2,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 6.472136,
+                "y": 1.0,
+                "z": 4.702282
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": 54.0,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 5.83174944,
+                "y": 1.0,
+                "z": 5.47637653
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": 46.8000031,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 5.09939241,
+                "y": 1.0,
+                "z": 6.16410542
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": 39.6000023,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 4.286615,
+                "y": 1.0,
+                "z": 6.754623
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": 32.4,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 3.40623522,
+                "y": 1.0,
+                "z": 7.238616
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": 25.2000046,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 2.47213578,
+                "y": 1.0,
+                "z": 7.60845232
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": 18.0,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 1.49905074,
+                "y": 1.0,
+                "z": 7.858298
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": 10.8000031,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 0.502324939,
+                "y": 1.0,
+                "z": 7.984214
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": 3.600006,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -0.502323747,
+                "y": 1.0,
+                "z": 7.984214
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -3.59999847,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -1.49904954,
+                "y": 1.0,
+                "z": 7.8582983
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -10.7999954,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -2.47213554,
+                "y": 1.0,
+                "z": 7.60845232
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -18.0,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -3.40623331,
+                "y": 1.0,
+                "z": 7.238617
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -25.1999969,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -4.286614,
+                "y": 1.0,
+                "z": 6.754624
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -32.3999939,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -5.09939,
+                "y": 1.0,
+                "z": 6.16410732
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -39.59999,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -5.831749,
+                "y": 1.0,
+                "z": 5.47637653
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -46.8000031,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -6.4721365,
+                "y": 1.0,
+                "z": 4.70228148
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -54.0,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -7.010453,
+                "y": 1.0,
+                "z": 3.85403013
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -61.1999969,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -7.438212,
+                "y": 1.0,
+                "z": 2.94499683
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -68.3999939,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -7.748665,
+                "y": 1.0,
+                "z": 1.989521
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -75.59999,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -7.9369173,
+                "y": 1.0,
+                "z": 1.00266743
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -82.79999,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -8.0,
+                "y": 1.0,
+                "z": -6.993822E-07
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -90.0,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -7.936918,
+                "y": 1.0,
+                "z": -1.002665
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -97.2,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -7.74866533,
+                "y": 1.0,
+                "z": -1.98951876
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -104.399994,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -7.43821239,
+                "y": 1.0,
+                "z": -2.94499469
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -111.599991,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -7.010454,
+                "y": 1.0,
+                "z": -3.854028
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -118.799988,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -6.4721365,
+                "y": 1.0,
+                "z": -4.702281
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -126.0,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -5.83174944,
+                "y": 1.0,
+                "z": -5.47637653
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -133.2,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -5.09939337,
+                "y": 1.0,
+                "z": -6.16410446
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -140.4,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -4.286616,
+                "y": 1.0,
+                "z": -6.75462246
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -147.599991,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -3.40623546,
+                "y": 1.0,
+                "z": -7.238616
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -154.799988,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -2.47213674,
+                "y": 1.0,
+                "z": -7.608452
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -162.0,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -1.49905479,
+                "y": 1.0,
+                "z": -7.85829735
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -169.199982,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": -0.5023243,
+                "y": 1.0,
+                "z": -7.984214
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -176.4,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 0.502324462,
+                "y": 1.0,
+                "z": -7.984214
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -183.6,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 1.49904752,
+                "y": 1.0,
+                "z": -7.858299
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -190.799988,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 2.472137,
+                "y": 1.0,
+                "z": -7.608452
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -198.0,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 3.40623236,
+                "y": 1.0,
+                "z": -7.23861742
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -205.199982,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 4.286613,
+                "y": 1.0,
+                "z": -6.75462437
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -212.4,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 5.099394,
+                "y": 1.0,
+                "z": -6.16410446
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -219.6,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 5.83174849,
+                "y": 1.0,
+                "z": -5.47637749
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -226.799988,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 6.47213554,
+                "y": 1.0,
+                "z": -4.70228243
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -234.0,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 7.01045132,
+                "y": 1.0,
+                "z": -3.854033
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -241.199982,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 7.438212,
+                "y": 1.0,
+                "z": -2.94499636
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -248.4,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 7.74866438,
+                "y": 1.0,
+                "z": -1.98952222
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -255.599976,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            },
+            {
+              "$type": "SpawnVisualObject",
+              "textureFilePath": "Mechanics/Resources/Arrow.png",
+              "relativePosition": {
+                "x": 7.9369173,
+                "y": 1.0,
+                "z": -1.00266862
+              },
+              "eulerAngles": {
+                "x": 0.0,
+                "y": -262.8,
+                "z": 0.0
+              },
+              "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+              },
+              "colorHtml": "#2579bd",
+              "visualDuration": 5.0
+            }
+          ]
+        },
+        {
+          "$type": "WaitEvent",
+          "timeToWait": 2.0
+        },
+        {
+          "$type": "SpawnTargetedEvents",
+          "targetingScheme": {
+            "$type": "TargetAllPlayers"
+          },
+          "referenceMechanicName": "StunPlayers"
+        }
+      ]
+    }
+  ]
+}
