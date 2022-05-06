@@ -270,7 +270,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 			{
 				events = new List<MechanicEvent>
 				{
-					new StartCastBar { castName = "Lash and Gnash", duration = gnashAndLashCastTime},
+					new StartCastBar { castName = "Lash and Gnash", duration = gnashAndLashCastTime },
 					new WaitEvent { timeToWait = gnashAndLashCastTime + 4f },
 					new SpawnMechanicEvent { referenceMechanicName = "Dynamo", isPositionRelative = true },
 					new WaitEvent { timeToWait = 2.8f },
@@ -288,7 +288,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 			{
 				events = new List<MechanicEvent>
 				{
-					new StartCastBar {castName = "Gnash and Lash", duration = gnashAndLashCastTime},
+					new StartCastBar {castName = "Gnash and Lash", duration = gnashAndLashCastTime },
 					new WaitEvent { timeToWait = gnashAndLashCastTime + 4f },
 					new SpawnMechanicEvent { referenceMechanicName = "Chariot", isPositionRelative = true },
 					new WaitEvent { timeToWait = 2.8f },
@@ -622,7 +622,7 @@ mechanicData.mechanicPools = new Dictionary<string, List<MechanicEvent>>
 
 mechanicData.mechanicEvents = new List<MechanicEvent>
 {
-	new SpawnMechanicEvent { referenceMechanicName = "ArenaBoundary" , position = new Vector2(-ScaleToSim(26f), ScaleToSim(26f)), rotation = -45 }, // 6.67
+	new SpawnMechanicEvent { referenceMechanicName = "ArenaBoundary" , position = new Vector2(-ScaleToSim(26f), ScaleToSim(26f)), rotation = -45 },
 	new SpawnMechanicEvent { referenceMechanicName = "ArenaBoundary" , position = new Vector2(ScaleToSim(26f), -ScaleToSim(26f)), rotation = 135 },
 	new SpawnVisualObject
 	{
