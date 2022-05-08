@@ -10,6 +10,13 @@ var buildOutputPath = @"D:\src\Unity\xiv-sim-mechanics";
 
 var mechanicData = new MechanicData();
 
+float ScaleToSim(float gameScale)
+{
+	return gameScale / 3f;
+}
+
+var gnashAndLashCastTime = 7.6f;
+
 mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProperties>
 {
 	{
@@ -37,18 +44,18 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 
 					new WaitEvent { timeToWait = 4.9f },
 					new StartCastBar { castName = "", duration = 100000 },
-					new WaitEvent { timeToWait = 1.1f },
+					new WaitEvent { timeToWait = 1.9f },
 					new ExecuteRandomEvents { mechanicPoolName = "InOutPool" },
-					new WaitEvent { timeToWait = 7.9f },
+					new WaitEvent { timeToWait = gnashAndLashCastTime - 0.1f },
 					new StartCastBar { castName = "", duration = 100000 },
-					new WaitEvent { timeToWait = 1.6f },
+					new WaitEvent { timeToWait = 1.1f },
 					new SpawnMechanicEvent { referenceMechanicName = "Stack-Target", isPositionRelative = true, isRotationRelative = true },
 
-					new WaitEvent { timeToWait = 11 },
+					new WaitEvent { timeToWait = 13f },
 					new ExecuteRandomEvents { mechanicPoolName = "InOutPool" },
-					new WaitEvent { timeToWait = 7.9f },
+					new WaitEvent { timeToWait = gnashAndLashCastTime - 0.1f },
 					new StartCastBar { castName = "", duration = 100000 },
-					new WaitEvent { timeToWait = 1.6f },
+					new WaitEvent { timeToWait = 1.1f },
 					new SpawnMechanicEvent { referenceMechanicName = "Stack-Target", isPositionRelative = true, isRotationRelative = true },
 
 					new WaitEvent { timeToWait = float.PositiveInfinity }
@@ -133,13 +140,13 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 			{
 				events = new List<MechanicEvent>
 				{
-					new WaitEvent { timeToWait = 2 },
+					new WaitEvent { timeToWait = 1.5f },
 					new SetEnemyMovement
 					{
 						movementTime = -1,
 						moveToTarget = new TargetSpecificProximityPlayers { targetIds = new List<int>{0} }
 					},
-					new WaitEvent { timeToWait = 1 },
+					new WaitEvent { timeToWait = 0.8f },
 					new StartCastBar {castName = "Geirskogul", duration = 4.5f},
 					new WaitEvent { timeToWait = 4.3f },
 					new SpawnMechanicEvent { referenceMechanicName = "Geirskogul", isPositionRelative = true, isRotationRelative = true }
@@ -171,7 +178,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		"Geirskogul",
 		new MechanicProperties {
 			collisionShape = CollisionShape.Rectangle,
-			collisionShapeParams = new Vector4(62/3f, 8/3f),
+			collisionShapeParams = new Vector4(ScaleToSim(62), ScaleToSim(8)),
 			colorHtml = "#ffae00",
 			mechanic = new ExecuteMultipleEvents
 			{
@@ -189,7 +196,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		"Stack",
 		new MechanicProperties {
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(2, 360),
+			collisionShapeParams = new Vector4(ScaleToSim(6), 360),
 			colorHtml = "#ff0060",
 			mechanic = new ExecuteMultipleEvents
 			{
@@ -222,7 +229,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		"Chariot",
 		new MechanicProperties {
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(2.5f, 360),
+			collisionShapeParams = new Vector4(ScaleToSim(8f), 360),
 			colorHtml = "#c800a0",
 			mechanic = new ExecuteMultipleEvents
 			{
@@ -230,7 +237,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				{
 					new WaitEvent { timeToWait = 0.2f },
 					new ApplyEffectToPlayers {
-						effect = new DamageEffect { damageAmount = 999999, damageType = "Damage", name = "Chariot" },
+						effect = new DamageEffect { damageAmount = 999999, damageType = "Damage", name = "Gnashing Wheel" },
 					}
 				}
 			}
@@ -240,7 +247,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		"Dynamo",
 		new MechanicProperties {
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(10, 360, 2.5f),
+			collisionShapeParams = new Vector4(ScaleToSim(40f), 360, ScaleToSim(8f)),
 			colorHtml = "#c800a0",
 			mechanic = new ExecuteMultipleEvents
 			{
@@ -248,7 +255,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				{
 					new WaitEvent { timeToWait = 0.2f },
 					new ApplyEffectToPlayers {
-						effect = new DamageEffect { damageAmount = 999999, damageType = "Damage", name = "Dynamo" },
+						effect = new DamageEffect { damageAmount = 999999, damageType = "Damage", name = "Lashing Wheel" },
 					}
 				}
 			}
@@ -263,10 +270,10 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 			{
 				events = new List<MechanicEvent>
 				{
-					new StartCastBar {castName = "Lash and Gnash", duration = 8},
-					new WaitEvent { timeToWait = 12f },
+					new StartCastBar { castName = "Lash and Gnash", duration = gnashAndLashCastTime },
+					new WaitEvent { timeToWait = gnashAndLashCastTime + 4f },
 					new SpawnMechanicEvent { referenceMechanicName = "Dynamo", isPositionRelative = true },
-					new WaitEvent { timeToWait = 3f },
+					new WaitEvent { timeToWait = 2.8f },
 					new SpawnMechanicEvent { referenceMechanicName = "Chariot", isPositionRelative = true },
 				}
 			}
@@ -281,10 +288,10 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 			{
 				events = new List<MechanicEvent>
 				{
-					new StartCastBar {castName = "Gnash and Lash", duration = 8},
-					new WaitEvent { timeToWait = 12f },
+					new StartCastBar {castName = "Gnash and Lash", duration = gnashAndLashCastTime },
+					new WaitEvent { timeToWait = gnashAndLashCastTime + 4f },
 					new SpawnMechanicEvent { referenceMechanicName = "Chariot", isPositionRelative = true },
-					new WaitEvent { timeToWait = 3f },
+					new WaitEvent { timeToWait = 2.8f },
 					new SpawnMechanicEvent { referenceMechanicName = "Dynamo", isPositionRelative = true },
 				}
 			}
@@ -300,7 +307,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				referenceMechanicName = "Tower-HiJump",
 				isPositionRelative = true,
 				isRotationRelative = true,
-				position = Vector3.up * 4f
+				position = Vector3.up * 9f / 2f
 			}
 		}
 	},
@@ -314,7 +321,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				referenceMechanicName = "Tower-HiJump",
 				isPositionRelative = true,
 				isRotationRelative = true,
-				position = Vector3.down * 4f
+				position = Vector3.down * 9f / 2f
 			}
 		}
 	},
@@ -328,7 +335,9 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				events = new List<MechanicEvent>
 				{
 					new WaitEvent { timeToWait = 4 },
-					new SpawnMechanicEvent { referenceMechanicName = "Tower", isPositionRelative = true, isRotationRelative = true }
+					new SpawnMechanicEvent { referenceMechanicName = "Tower", isPositionRelative = true, isRotationRelative = true },
+					new WaitEvent { timeToWait = 1.8f + 0.76f },
+					new SpawnMechanicEvent { referenceMechanicName = "Spawn-TowerAdd", isPositionRelative = true, isRotationRelative = true }
 				}
 			}
 		}
@@ -338,17 +347,17 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 		new MechanicProperties
 		{
 			collisionShape = CollisionShape.Round,
-			collisionShapeParams = new Vector4(5/3f, 360),
+			collisionShapeParams = new Vector4(ScaleToSim(5), 360),
 			colorHtml = "#FFFF00",
 			mechanic = new ExecuteMultipleEvents
 			{
 				events = new List<MechanicEvent>
 				{
-					new SpawnVisualObject { textureFilePath = $"Mechanics/Resources/LimitCut-1.png", colorHtml = "#FFFF00", visualDuration = 2, relativePosition = Vector3.up, isBillboard = true },
-					new WaitEvent { timeToWait = 2 },
+					new SpawnVisualObject { textureFilePath = $"Mechanics/Resources/LimitCut-1.png", colorHtml = "#FFFF00", visualDuration = 1.8f, relativePosition = Vector3.up, isBillboard = true },
+					new WaitEvent { timeToWait = 1.8f },
 					new CheckNumberOfPlayers
 					{
-						expressionFormat = $"{{0}} = 1",
+						expressionFormat = $"{{0}} > 0",
 						failEvent = new SpawnMechanicEvent { referenceMechanicName = "TowerFail", isPositionRelative = true }
 					},
 					new ApplyEffectToPlayers {
@@ -358,8 +367,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 							new ApplyStatusEffect { referenceStatusName = "MagicVuln" },
 							new ApplyStatusEffect { referenceStatusName = "PhysVuln" }
 						}
-					},
-					new SpawnMechanicEvent { referenceMechanicName = "Spawn-TowerAdd", isPositionRelative = true, isRotationRelative = true }
+					}
 				}
 			}
 		}
@@ -395,9 +403,9 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				colorHtml = "#ff0060",
 				maxHp = int.MaxValue,
 				baseMoveSpeed = 3,
-				hitboxSize = 6.67f,
-				visualPosition = new Vector3(0, 1.5f, 0),
-				visualScale = Vector3.one * 3,
+				hitboxSize = ScaleToSim(10.5f) * 2,
+				visualPosition = new Vector3(0, 1.75f, 0),
+				visualScale = Vector3.one * 3.5f,
 				position = new Vector2(0, 0),
 				rotation = 180,
 				referenceMechanicName = "NidhoggMechanics",
@@ -417,8 +425,8 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				colorHtml = "#ff0060",
 				maxHp = int.MaxValue,
 				baseMoveSpeed = 0,
-				visualPosition = new Vector3(0, 1.5f, 0),
-				visualScale = Vector3.one * 2,
+				visualPosition = new Vector3(0, 1.75f, 0),
+				visualScale = Vector3.one * 2.5f,
 				isPositionRelative = true,
 				isRotationRelative = true,
 				rotation = 180,
@@ -441,6 +449,23 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 	}
 };
 
+for (int i = 1; i <= 3; i++)
+{
+	var scale = Vector3.one * 0.5f;
+	mechanicData.referenceMechanicProperties[$"JumpMarker-{i}"] = new MechanicProperties {
+		visible = false,
+		mechanic = new SpawnVisualObject {
+			textureFilePath = $"Mechanics/Resources/LimitCut-{i}.png",
+			colorHtml = i % 2 == 0 ? "#ff0000" : "#0000ff",
+			visualDuration = 5f,
+			scale = scale,
+			relativePosition = Vector3.up,
+			isBillboard = true,
+			spawnOnPlayer = true,
+		}
+	};
+}
+
 var jumps = new List<string> { "HiJump", "Spineshatter", "Elusive" };
 
 foreach (var jump in jumps)
@@ -455,7 +480,8 @@ foreach (var jump in jumps)
 				events = new List<MechanicEvent>
 				{
 					new ApplyEffectToTargetOnly { effect = new ApplyStatusEffect { referenceStatusName = $"Line-{i}" } },
-					new WaitEvent { timeToWait = 5 },
+					new SpawnTargetedEvents { referenceMechanicName = $"JumpMarker-{i}", targetingScheme = new TargetExistingTarget() },
+					new WaitEvent { timeToWait = 5.5f },
 					new ApplyEffectToTargetOnly { effect = new ApplyStatusEffect { referenceStatusName = $"{jump}-{i}" } },
 				}
 			}
@@ -464,7 +490,7 @@ foreach (var jump in jumps)
 	mechanicData.referenceMechanicProperties[$"{jump}-AOE"] = new MechanicProperties
 	{
 		collisionShape = CollisionShape.Round,
-		collisionShapeParams = new Vector4(5/3f, 360),
+		collisionShapeParams = new Vector4(ScaleToSim(5), 360),
 		colorHtml = "#ff0060",
 		mechanic = new ExecuteMultipleEvents
 		{
@@ -596,15 +622,15 @@ mechanicData.mechanicPools = new Dictionary<string, List<MechanicEvent>>
 
 mechanicData.mechanicEvents = new List<MechanicEvent>
 {
-	new SpawnMechanicEvent { referenceMechanicName = "ArenaBoundary" , position = new Vector2(-6.67f, 6.67f), rotation = -45 },
-	new SpawnMechanicEvent { referenceMechanicName = "ArenaBoundary" , position = new Vector2(6.67f, -6.67f), rotation = 135 },
+	new SpawnMechanicEvent { referenceMechanicName = "ArenaBoundary" , position = new Vector2(-ScaleToSim(26f), ScaleToSim(26f)), rotation = -45 },
+	new SpawnMechanicEvent { referenceMechanicName = "ArenaBoundary" , position = new Vector2(ScaleToSim(26f), -ScaleToSim(26f)), rotation = 135 },
 	new SpawnVisualObject
 	{
 		textureFilePath = "Mechanics/Resources/ArenaSquare4x4.png",
 		visualDuration = float.PositiveInfinity,
 		relativePosition = new Vector3(0, -0.001f, 0),
 		eulerAngles = new Vector3(90, 0, 0),
-		scale = new Vector3(17.2f, 17.2f, 1),
+		scale = new Vector3(23f, 23f, 1),
 	},
 	new SpawnMechanicEvent{	referenceMechanicName = "Spawn-Nidhogg" }
 };
