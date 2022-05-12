@@ -29,19 +29,20 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 				events = new List<MechanicEvent>
 				{
 					new WaitForAggro(),
+					
 					new SpawnTargetedEvents { referenceMechanicName = "AutoAttack", targetingScheme = new TargetNthHighestAggro(), isPositionRelative = true },
 					new WaitEvent { timeToWait = 3 },
 					new SpawnTargetedEvents { referenceMechanicName = "AutoAttack", targetingScheme = new TargetNthHighestAggro(), isPositionRelative = true },
 					new WaitEvent { timeToWait = 3 },
 					new SpawnTargetedEvents { referenceMechanicName = "AutoAttack", targetingScheme = new TargetNthHighestAggro(), isPositionRelative = true },
 					new WaitEvent { timeToWait = 3 },
-
+					
 					new SetEnemyBaseSpeed { baseMoveSpeed = 0 },
 					new StartCastBar { castName = "Dive from Grace", duration = 5},
 					new ExecuteRandomEvents { mechanicPoolName = "Debuffs1" },
 					new ExecuteRandomEvents { mechanicPoolName = "Debuffs2" },
-
-
+					
+					
 					new WaitEvent { timeToWait = 4.9f },
 					new StartCastBar { castName = "", duration = 100000 },
 					new WaitEvent { timeToWait = 1.9f },
@@ -50,14 +51,14 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 					new StartCastBar { castName = "", duration = 100000 },
 					new WaitEvent { timeToWait = 1.1f },
 					new SpawnMechanicEvent { referenceMechanicName = "Stack-Target", isPositionRelative = true, isRotationRelative = true },
-
+					
 					new WaitEvent { timeToWait = 13f },
 					new ExecuteRandomEvents { mechanicPoolName = "InOutPool" },
 					new WaitEvent { timeToWait = gnashAndLashCastTime - 0.1f },
 					new StartCastBar { castName = "", duration = 100000 },
 					new WaitEvent { timeToWait = 1.1f },
 					new SpawnMechanicEvent { referenceMechanicName = "Stack-Target", isPositionRelative = true, isRotationRelative = true },
-
+					
 					new WaitEvent { timeToWait = float.PositiveInfinity }
 				}
 			}
@@ -558,6 +559,8 @@ for(int i = 1; i <= 3; i++)
 		statusDescription = "Soon to be on the receiving end of a Dark High Jump.",
 		duration = i * 10,
 		referenceMechanicName = "HiJump-AOE",
+		shouldKeepOnDeath = true,
+		allowDuplicates = true,
 	};
 	mechanicData.referenceStatusProperties[$"Elusive-{i}"] = new SpawnMechanicOnExpire
 	{
@@ -566,6 +569,8 @@ for(int i = 1; i <= 3; i++)
 		statusDescription = "Soon to be on the receiving end of a Dark Elusive Jump.",
 		duration = i * 10,
 		referenceMechanicName = "Elusive-AOE",
+		shouldKeepOnDeath = true,
+		allowDuplicates = true,
 	};
 	mechanicData.referenceStatusProperties[$"Spineshatter-{i}"] = new SpawnMechanicOnExpire
 	{
@@ -574,6 +579,8 @@ for(int i = 1; i <= 3; i++)
 		statusDescription = "Soon to be on the receiving end of a Dark Spineshatter Dive.",
 		duration = i * 10,
 		referenceMechanicName = "Spineshatter-AOE",
+		shouldKeepOnDeath = true,
+		allowDuplicates = true,
 	};
 	mechanicData.referenceStatusProperties[$"Line-{i}"] = new StatusEffectData
 	{
@@ -581,6 +588,8 @@ for(int i = 1; i <= 3; i++)
 		statusName = $"{lineNames[i]} in Line",
 		statusDescription = $"Marked as target #{i}.",
 		duration = i * 10 + 5,
+		shouldKeepOnDeath = true,
+		allowDuplicates = true,
 	};
 }
 
@@ -638,7 +647,7 @@ mechanicData.mechanicEvents = new List<MechanicEvent>
 var resultText = mechanicData.ToString();
 
 File.WriteAllText($@"{baseOutputPath}\Mechanics\{mechanicName}.json", resultText);
-File.WriteAllText($@"{baseOutputPath}\Build\Mechanics\{mechanicName}.json", resultText);
+//File.WriteAllText($@"{baseOutputPath}\Build\Mechanics\{mechanicName}.json", resultText);
 File.WriteAllText($@"{buildOutputPath}\Mechanics\{mechanicName}.json", resultText);
 
 $"Finished writing json to Mechanics/{mechanicName}.json".Dump();
