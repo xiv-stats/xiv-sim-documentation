@@ -1,11 +1,11 @@
 <Query Kind="Statements">
-  <Reference>D:\src\Unity\XivMechanicSimNetworked\Library\ScriptAssemblies\Assembly-CSharp.dll</Reference>
+  <Reference>D:\src\Unity\xiv-sim\Library\ScriptAssemblies\Assembly-CSharp.dll</Reference>
   <Reference>&lt;ProgramFilesX64&gt;\Unity\Hub\Editor\2020.3.6f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</Reference>
   <Namespace>UnityEngine</Namespace>
 </Query>
 
 var mechanicName = "CloudOfDarknessDemo";
-var baseOutputPath = $@"D:\src\Unity\XivMechanicSimNetworked";
+var baseOutputPath = $@"D:\src\Unity\xiv-sim";
 var buildOutputPath = @"D:\src\Unity\xiv-sim-mechanics";
 
 var mechanicData = new MechanicData();
@@ -1502,9 +1502,9 @@ File.WriteAllText($@"{baseOutputPath}\Mechanics\{mechanicName}.json", resultText
 File.WriteAllText($@"{baseOutputPath}\Build\Mechanics\{mechanicName}.json", resultText);
 File.WriteAllText($@"{buildOutputPath}\Mechanics\{mechanicName}.json", resultText);
 
-if (Directory.Exists(@"D:\src\Builds\XivMechanicSimNetworked - Short E9S Tile Demo\Mechanics"))
+if (Directory.Exists(@"D:\src\Builds\xiv-sim - Short E9S Tile Demo\Mechanics"))
 {
-	File.WriteAllText($@"D:\src\Builds\XivMechanicSimNetworked - Short E9S Tile Demo\Mechanics\{mechanicName}.json", resultText);
+	File.WriteAllText($@"D:\src\Builds\xiv-sim - Short E9S Tile Demo\Mechanics\{mechanicName}.json", resultText);
 }
 
 $"Finished writing json to Mechanics/{mechanicName}.json".Dump();

@@ -1,6 +1,6 @@
 <Query Kind="Statements">
-  <Reference Relative="..\XivMechanicSimNetworked_Data\Managed\Assembly-CSharp.dll">C:\Users\exces\Desktop\XIV SIM\XivMechanicSimNetworked_Data\Managed\Assembly-CSharp.dll</Reference>
-  <Reference Relative="..\XivMechanicSimNetworked_Data\Managed\UnityEngine.CoreModule.dll">C:\Users\exces\Desktop\XIV SIM\XivMechanicSimNetworked_Data\Managed\UnityEngine.CoreModule.dll</Reference>
+  <Reference Relative="..\xiv-sim_Data\Managed\Assembly-CSharp.dll">C:\Users\exces\Desktop\XIV SIM\xiv-sim_Data\Managed\Assembly-CSharp.dll</Reference>
+  <Reference Relative="..\xiv-sim_Data\Managed\UnityEngine.CoreModule.dll">C:\Users\exces\Desktop\XIV SIM\xiv-sim_Data\Managed\UnityEngine.CoreModule.dll</Reference>
   <Namespace>UnityEngine</Namespace>
 </Query>
 

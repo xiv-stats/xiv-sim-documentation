@@ -1,11 +1,11 @@
 <Query Kind="Statements">
-  <Reference Relative="..\..\..\XivMechanicSimNetworked\Library\ScriptAssemblies\Assembly-CSharp.dll">D:\src\Unity\XivMechanicSimNetworked\Library\ScriptAssemblies\Assembly-CSharp.dll</Reference>
+  <Reference Relative="..\..\..\xiv-sim\Library\ScriptAssemblies\Assembly-CSharp.dll">D:\src\Unity\xiv-sim\Library\ScriptAssemblies\Assembly-CSharp.dll</Reference>
   <Reference>&lt;ProgramFilesX64&gt;\Unity\Hub\Editor\2020.3.6f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</Reference>
   <Namespace>UnityEngine</Namespace>
 </Query>
 
 var mechanicName = "RotationDemo";
-var baseOutputPath = @"D:\src\Unity\XivMechanicSimNetworked";
+var baseOutputPath = @"D:\src\Unity\xiv-sim";
 var buildOutputPath = @"D:\src\Unity\xiv-sim-documentation";
 
 
