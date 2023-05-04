@@ -141,7 +141,7 @@ mechanicData.referenceMechanicProperties = new Dictionary<string, MechanicProper
 					new SpawnTargetedEvents { referenceMechanicName = "LimitCutMarker-8", targetingScheme = new TargetSpecificPlayerIds { targetIds = new List<int>{7}, dropExtraEvents = true } },
 					new WaitEvent { timeToWait = 2 },
 					new ExecuteRandomEvents { mechanicPoolName = "Hawkblaster-Pool" },
-					new WaitEvent { timeToWait = 6 },
+					new WaitEvent { timeToWait = 7.5 },
 					new SetEnemyMovement { movementTime = 0.01f, moveToTarget = new TargetSpecificPlayerIds { targetIds = new List<int>{0} }, position = new Vector3(0, -1) },
 					new WaitEvent { timeToWait = 0.01f },
 					new SetEnemyMovement { movementTime = -1, moveToTarget =new TargetSpecificPlayerIds { targetIds = new List<int>{0} } },
